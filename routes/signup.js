@@ -15,7 +15,7 @@ router.post('/customer', function(req, res, next) {
         else console.log(result);
     });
 
-    var create_table_custphone="CREATE TABLE IF NOT EXISTS custphone (custid VARCHAR(40) NOT NULL UNIQUE,cphone VARCHAR(20) NOT NULL,PRIMARY KEY (custid,cphone),FOREIGN KEY (custid) REFERENCES customers(custid))";
+    var create_table_custphone="CREATE TABLE IF NOT EXISTS custphone (custid VARCHAR(40) NOT NULL,cphone VARCHAR(20) NOT NULL,PRIMARY KEY (custid,cphone),FOREIGN KEY (custid) REFERENCES customers(custid))";
     // console.log(create_table_cphone);
     db.query(create_table_custphone,function(err,result){
         if(err) console.log(err);
@@ -36,7 +36,7 @@ router.post('/customer', function(req, res, next) {
         else console.log(result);
     });
 
-    var create_table_caddress="CREATE TABLE IF NOT EXISTS caddress (custid VARCHAR(40) NOT NULL UNIQUE,houseno VARCHAR(20) NOT NULL,streetno VARCHAR(20) NOT NULL,pincode VARCHAR(6) NOT NULL,PRIMARY KEY (custid,houseno,streetno,pincode),FOREIGN KEY (pincode) REFERENCES city(pincode),FOREIGN KEY (custid) REFERENCES customers(custid))";
+    var create_table_caddress="CREATE TABLE IF NOT EXISTS caddress (custid VARCHAR(40) NOT NULL,houseno VARCHAR(50) NOT NULL,streetno VARCHAR(50) NOT NULL,pincode VARCHAR(6) NOT NULL,PRIMARY KEY (custid,houseno,streetno,pincode),FOREIGN KEY (pincode) REFERENCES city(pincode),FOREIGN KEY (custid) REFERENCES customers(custid))";
     // console.log(create_table_address);
     db.query(create_table_caddress,function(err,result){
         if(err) console.log(err);
@@ -88,7 +88,7 @@ router.post('/customer', function(req, res, next) {
             else console.log(result);
         });            
     });
-
+    // INSERT INTO custphone (custid,cphone) values ('a@a','1234');
     res.redirect('/');
 });
 router.get('/seller', function(req, res, next) {
