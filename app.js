@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession=require('express-session');
-
+var session=require('client-sessions');
 require('dotenv').load();
 
 var index = require('./routes/index');
@@ -29,11 +29,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(expressSession({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
+app.use(session({
+  cookieName: 'session',
+  secret: 'its my first session generation',
+  duration: 30*60*1000,
+  activeDuration: 30*60*1000,
+  httpOnly: true,
+  secure: true,
+  ephemeral: true
 }));
+// app.use(expressSession({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
 app.use((req,res,next)=>{
   var additem="CREATE TABLE IF NOT EXISTS items (itemid VARCHAR(40) NOT NULL UNIQUE,iname VARCHAR(20) NOT NULL,price FLOAT NOT NULL,description VARCHAR(100) NOT NULL,shipcost FLOAT NOT NULL,sellerid VARCHAR(40) NOT NULL,iquantity INT NOT NULL,PRIMARY KEY (itemid),FOREIGN KEY (sellerid) REFERENCES sellers(sellerid))"; 
