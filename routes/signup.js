@@ -95,7 +95,7 @@ router.get('/seller', function(req, res, next) {
     res.render('signup_seller', { title: 'Seller SignUp' });
 });
 router.post('/seller',function(req,res,next){
-    var create_table_sellers="CREATE TABLE IF NOT EXISTS sellers (sellerid VARCHAR(40) NOT NULL UNIQUE,sname VARCHAR(20) NOT NULL,password VARCHAR(100) NOT NULL,dob DATE NOT NULL,address VARCHAR(100) NOT NULL,PRIMARY KEY (custid))";
+    var create_table_sellers="CREATE TABLE IF NOT EXISTS sellers (sellerid VARCHAR(40) NOT NULL UNIQUE,sname VARCHAR(20) NOT NULL,password VARCHAR(100) NOT NULL,dob DATE NOT NULL,address VARCHAR(100) NOT NULL,PRIMARY KEY (sellerid))";
     db.query(create_table_sellers,function(err,result){
         if(err) console.log(err);
         else console.log(result);
@@ -111,7 +111,7 @@ router.post('/seller',function(req,res,next){
 
     var insert_seller="INSERT INTO sellers (sellerid,sname,password,dob,address) values ('" + req.body.email+ "','"+req.body.sname+"','"+req.body.password+"','"+req.body.dob+"','"+req.body.address+"')";
     db.query(insert_seller,function(err,result){
-        if(err) console.log(err);
+        if(err) console.log(err.sqlMessage);
         else console.log(result);
     });
 
