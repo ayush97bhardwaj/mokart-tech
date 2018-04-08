@@ -1,2 +1,1 @@
-# mokart-tech
-Online shopping platform
+online shopping platform
