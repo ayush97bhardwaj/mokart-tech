@@ -1,0 +1,29 @@
+<h4 id="cust">customer</h4>
+<h4 id="seller">seller</h4>
+<h2 style="color:blue;">{{user}}</h2>
+<h1>{{err}}</h1>
+<form action="/signin/customer" method="post" id="cform" autocomplete="off">
+    <h3>customer login</h3>
+    <input type="text" placeholder="email" name="email" value="{{email}}" autocomplete="off">
+    <input type="password" placeholder="password" name="password" autocomplete="new-password">
+    <input type="submit" value="submit">
+</form>
+<form action="/signin/seller" method="post" id="sform" autocomplete="off">
+    <h3>seller login</h3>
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="submit">
+</form>
+<script>
+    $("#cform").show();
+    $("#sform").hide();
+    
+    $("#cust").click(()=>{
+        $("#cform").show();
+        $("#sform").hide();
+    });
+    $("#seller").click(()=>{
+        $("#sform").show();
+        $("#cform").hide();
+    });
+</script>
