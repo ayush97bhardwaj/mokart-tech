@@ -1,4 +1,6 @@
 <div class="container">
+    <h1 class="center-align">New Customer SignUP</h1>
+
     <form action="/signup/customer" method="post" autocomplete="off">
 
         <div class="row">
@@ -33,9 +35,9 @@
         <div class="row">
             <div class="input-field col s12">
                 <input type="text" name="phone[0]"/>
-                <label>Phone Number</label>
+                <label>Phone Numbers</label>
+                <p id="addphone">add another number</p>
             </div>
-            <p id="addphone">add another number</p>
         </div>
 
         <h5>Address</h5>
@@ -49,7 +51,13 @@
         <label for="state">State</label>
         <input type="text" name='address[0][pincode]'/>
         <label for="pincode">Pincode</label>
-        {{!-- <p id="addr">add address</p> --}}
+        <p id="addr">add address</p>
+
+        <div class="row">
+            <div class="input-field col s12 center-align">
+                <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+            </div>
+        </div>
         <br>
         <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
     </form>
@@ -59,7 +67,7 @@
     let i = 0, j = 0;
     $("#addphone").click(() => {
         j++;
-        $('#addphone').before('<div class="input-field col s12"><input type="text" name="phone['+j+']"/><label>Another Phone Number</label></div>');
+        $('#addphone').before('<input type="text" name="phone[' + j + ']"/>');
     });
     $("#addr").click(() => {
         i++;
