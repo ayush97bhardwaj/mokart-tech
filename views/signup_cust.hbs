@@ -1,51 +1,75 @@
-<form action="/signup/customer" method="post" autocomplete="off">
-    <label for="cname">Name</label>
-    <input type="text" name="cname"/>
-<br>
-    <label for="dob">Date of Birth</label>
-    <input type="date" name="dob"/>
-    <br>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email"/>
-<br>
-    <label for="password">password</label>
-    <input type="password" name="password" id="password"/>
-<br>
-    <label>Phone Numbers</label>
-    <input type="text" name="phone[0]"/>
-    <p id="addphone">add another number</p>
-<br>
-    <h5>Address</h5>
-    <label for="houseno">House no.</label>
-    <input type="text" name='address[0][houseno]'/>
-    <label for="streeno">Street no.</label>
-    <input type="text" name='address[0][streetno]'/>
-    <label for="city">City</label>
-    <input type="text" name='address[0][city]'/>
-    <label for="state">State</label>
-    <input type="text" name='address[0][state]'/>
-    <label for="pincode">Pincode</label>
-    <input type="text" name='address[0][pincode]'/>
-    <p id="addr">add address</p>
-    <br>
-    <input type="submit" id="submit"></input>
-</form>
+<div class="container">
+    <form action="/signup/customer" method="post" autocomplete="off">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="cname"/>
+                <label for="cname">Name</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="date" name="dob"/>
+                <label for="dob">Date of Birth</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="email" name="email" id="email"/>
+                <label for="email">Email</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="password" name="password" id="password"/>
+                <label for="password">password</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="phone[0]"/>
+                <label>Phone Numbers</label>
+                <p id="addphone">add another number</p>
+            </div>
+        </div>
+
+        <h5>Address</h5>
+        <input type="text" name='address[0][houseno]'/>
+        <label for="houseno">House no.</label>
+        <input type="text" name='address[0][streetno]'/>
+        <label for="streeno">Street no.</label>
+        <input type="text" name='address[0][city]'/>
+        <label for="city">City</label>
+        <input type="text" name='address[0][state]'/>
+        <label for="state">State</label>
+        <input type="text" name='address[0][pincode]'/>
+        <label for="pincode">Pincode</label>
+        <p id="addr">add address</p>
+        <br>
+        <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+    </form>
+</div>
 
 <script>
-    let i=0,j=0;
-    $("#addphone").click(()=>{
+    let i = 0, j = 0;
+    $("#addphone").click(() => {
         j++;
-        $('#addphone').before('<input type="text" name="phone['+j+']"/>');
+        $('#addphone').before('<input type="text" name="phone[' + j + ']"/>');
     });
-    $("#addr").click(()=>{
+    $("#addr").click(() => {
         i++;
-        $('#addr').before('<br><label for="houseno">House no.</label><input type="text" name="address['+i+'][houseno]"/><label for="streetno">Street no.</label><input type="text" name="address['+i+'][streetno]"/><label for="city">City</label><input type="text" name="address['+i+'][city]"/><label for="state">State</label><input type="text" name="address['+i+'][state]"/><label for="pincode">Pincode</label><input type="text" name="address['+i+'][pincode]"/>');
+        $('#addr').before('<br><label for="houseno">House no.</label><input type="text" name="address[' + i + '][houseno]"/><label for="streetno">Street no.</label><input type="text" name="address[' + i + '][streetno]"/><label for="city">City</label><input type="text" name="address[' + i + '][city]"/><label for="state">State</label><input type="text" name="address[' + i + '][state]"/><label for="pincode">Pincode</label><input type="text" name="address[' + i + '][pincode]"/>');
     });
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    $("#submit").click(()=>{
-        var email=$("#email").val();
+    $("#submit").click(() => {
+        var email = $("#email").val();
         console.log(email);
-        if(re.test(email))
+        if (re.test(email))
             console.log("email is valid");
         else
             console.log('not valid email');
