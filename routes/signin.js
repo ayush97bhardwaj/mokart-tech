@@ -3,7 +3,16 @@ var router = express.Router();
 var db=require('../db');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('signin', { title: 'signin' });
+    if(req.session){
+        if(req.session.custid){
+            res.render('signin', { title: 'signin' , user:req.session.custid});
+        }
+        else if(req.session.sellerid){
+            res.render('signin', { title: 'signin' , user:req.session.sellerid});
+        }
+    }
+    else
+        res.render('signin', { title: 'signin' });
 });
 
 router.post('/customer',(req,res,next)=>{
@@ -18,7 +27,10 @@ router.post('/customer',(req,res,next)=>{
             if(result[0].password != req.body.password){
                 res.render('signin',{err:'wrong password for registered customer',email:req.body.email});
             }
-            else res.redirect('/signin');
+            else {
+                req.session.custid=req.body.email;
+                res.redirect('/signin');
+            }
         }
     })
     // res.redirect('/signin');
@@ -36,7 +48,10 @@ router.post('/seller',(req,res,next)=>{
             if(result[0].password != req.body.password){
                 res.render('signin',{err:'wrong password for registered seller',email:req.body.email});
             }
-            else res.redirect('/signin');
+            else {
+                req.session.sellerid=req.body.email;
+                res.redirect('/signin');
+            }
         }
     })
     // res.redirect('/signin');

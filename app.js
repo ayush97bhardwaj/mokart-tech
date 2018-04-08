@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressSession=require('express-session');
 // var mysql = require('mysql')
 require('dotenv').load();
 
@@ -22,6 +23,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var signup = require('./routes/signup');
 var signin=require('./routes/signin');
+var additem=require('./routes/add');
 
 var app = express();
 
@@ -36,12 +38,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressSession({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/signup',signup);
 app.use('/signin',signin);
-
+app.use('/seller',additem);
+app.get('/logout',(req,res,next)=>{
+  req.session.destroy(function(err){
+    if(err) console.log(err);
+  });
+  res.redirect('/signin');
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
