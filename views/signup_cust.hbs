@@ -1,25 +1,52 @@
 <form action="/signup/customer" method="post">
     <label for="cname">Name</label>
     <input type="text" name="cname"/>
-
+<br>
     <label for="dob">Date of Birth</label>
-    <input type="text" name="dob"/>
-    
+    <input type="date" name="dob"/>
+    <br>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email"/>
+<br>
+    <label for="password">password</label>
+    <input type="password" name="password" id="password"/>
+<br>
     <label>Phone Numbers</label>
-    <input type="text" name="phone1"/>
-    <p>optional</p>
-    <input type="text" name="phone2"/>
-
-    <label>Address</label>
+    <input type="text" name="phone"/>
+    <p id="addphone">add another number</p>
+<br>
+    <h5>Address</h5>
     <label for="houseno">House no.</label>
-    <input type="text" name="houseno"/>
+    <input type="text" name='address[0][houseno]'/>
     <label for="streeno">Street no.</label>
-    <input type="text" name="streetno"/>
+    <input type="text" name='address[0][streetno]'/>
     <label for="city">City</label>
-    <input type="text" name="city"/>
+    <input type="text" name='address[0][city]'/>
     <label for="state">State</label>
-    <input type="text" name="state"/>
+    <input type="text" name='address[0][state]'/>
     <label for="pincode">Pincode</label>
-    <input type="text" name="pincode"/>
-    <input type="submit"></input>
+    <input type="text" name='address[0][pincode]'/>
+    <p id="addr">add address</p>
+    <br>
+    <input type="submit" id="submit"></input>
 </form>
+
+<script>
+    let i=0;
+    $("#addphone").click(()=>{
+        $('#addphone').before('<input type="text" name="phone"/>');
+    });
+    $("#addr").click(()=>{
+        i++;
+        $('#addr').before('<br><label for="houseno">House no.</label><input type="text" name="address['+i+'][houseno]"/><label for="streetno">Street no.</label><input type="text" name="address['+i+'][streetno]"/><label for="city">City</label><input type="text" name="address['+i+'][city]"/><label for="state">State</label><input type="text" name="address['+i+'][state]"/><label for="pincode">Pincode</label><input type="text" name="address['+i+'][pincode]"/>');
+    });
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    $("#submit").click(()=>{
+        var email=$("#email").val();
+        console.log(email);
+        if(re.test(email))
+            console.log("email is valid");
+        else
+            console.log('not valid email');
+    });
+</script>
