@@ -7,6 +7,7 @@ router.get('/',(req,res,next)=>{
 });
 
 router.post('/additem',(req,res,next)=>{
+    
     res.redirect('/');
 });
 
