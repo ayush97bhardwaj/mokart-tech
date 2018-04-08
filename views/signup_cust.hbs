@@ -1,4 +1,6 @@
 <div class="container">
+    <h1 class="center-align">New Customer SignUP</h1>
+
     <form action="/signup/customer" method="post" autocomplete="off">
 
         <div class="row">
@@ -50,6 +52,12 @@
         <input type="text" name='address[0][pincode]'/>
         <label for="pincode">Pincode</label>
         <p id="addr">add address</p>
+
+        <div class="row">
+            <div class="input-field col s12 center-align">
+                <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+            </div>
+        </div>
         <br>
         <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
     </form>
