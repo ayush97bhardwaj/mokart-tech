@@ -1,60 +1,59 @@
 <div class="container">
-    <h1 class="center-align">New Seller SignUP</h1>
+    <h2 class="center-align">New Seller SignUP</h2>
     <form action="/signup/seller" method="post" autocomplete="off">
 
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <input type="text" name="sname"/>
                 <label for="sname">Name</label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <input type="date" name="dob"/>
                 <label for="dob">Date of Birth</label>
             </div>
         </div>
+
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <input type="text" name="email" autocomplete="off"/>
                 <label for="email">Email Id</label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <input type="password" name="password" id="password"/>
                 <label for="password">password</label>
             </div>
         </div>
+
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <input type="text" name="phone[0]"/>
                 <label>Phone Numbers</label>
+                <!--<p id="addphone">add another number</p>-->
+            </div>
+            <div class="input-field col s6">
+                <input type="text" name="phone[1]"/>
+                <label>Alternate Phone Number</label>
+            </div>
+        </div>
+
+        <h5 class="center-align">Address</h5>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name='addressSeller'/>
+                <label for="addressSeller">Address</label>
             </div>
         </div>
 
         <!--<div class="row">-->
         <!--<div class="input-field col s12">-->
-        <h5>Address</h5>
-        <input type="text" name='address[0][houseno]'/>
-        <label for="houseno">House no.</label>
-        <input type="text" name='address[0][streetno]'/>
-        <label for="streeno">Street no.</label>
-        <input type="text" name='address[0][city]'/>
-        <label for="city">City</label>
-        <input type="text" name='address[0][state]'/>
-        <label for="state">State</label>
-        <input type="text" name='address[0][pincode]'/>
-        <label for="pincode">Pincode</label>
         <!--</div>-->
         <!--</div>-->
 
         <div class="row">
             <div class="input-field col s12 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large"/>
+                <input type="submit" class="waves-effect waves-light btn-large" value="submit"/>
             </div>
         </div>
-        <input type="submit" class="waves-effect waves-light btn-large"/>
 
     </form>
 </div>
