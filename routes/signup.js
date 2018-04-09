@@ -107,6 +107,31 @@ router.post('/seller',function(req,res,next){
         else console.log(result);
     });
 
+    var additem="CREATE TABLE IF NOT EXISTS items (itemid VARCHAR(40) NOT NULL UNIQUE,iname VARCHAR(20) NOT NULL,price FLOAT NOT NULL,description VARCHAR(100) NOT NULL,shipcost FLOAT NOT NULL,sellerid VARCHAR(40) NOT NULL,iquantity INT NOT NULL,PRIMARY KEY (itemid),FOREIGN KEY (sellerid) REFERENCES sellers(sellerid))"; 
+    db.query(additem,(err,result)=>{
+        if(err) console.log(err);
+        // else console.log(result);
+    });
+    var electronics="CREATE TABLE IF NOT EXISTS electronics (itemid VARCHAR(40) NOT NULL UNIQUE,warrenty VARCHAR(20) NOT NULL,PRIMARY KEY (itemid),FOREIGN KEY (itemid) REFERENCES items(itemid))";
+    db.query(electronics,(err,result)=>{
+        if(err) console.log(err);
+        // else console.log(result);
+    });
+    var fashion="CREATE TABLE IF NOT EXISTS fashion (itemid VARCHAR(40) NOT NULL UNIQUE,size VARCHAR(20) NOT NULL,PRIMARY KEY (itemid),FOREIGN KEY (itemid) REFERENCES items(itemid))";
+    db.query(fashion,(err,result)=>{
+        if(err) console.log(err);
+        // else console.log(result);
+    });
+    var sports="CREATE TABLE IF NOT EXISTS sports (itemid VARCHAR(40) NOT NULL UNIQUE,size VARCHAR(20) NOT NULL,PRIMARY KEY (itemid),FOREIGN KEY (itemid) REFERENCES items(itemid))";
+    db.query(sports,(err,result)=>{
+        if(err) console.log(err);
+        // else console.log(result);
+    });
+    var books="CREATE TABLE IF NOT EXISTS books (itemid VARCHAR(40) NOT NULL UNIQUE,author VARCHAR(20) NOT NULL,publisher VARCHAR(20) NOT NULL,PRIMARY KEY (itemid),FOREIGN KEY (itemid) REFERENCES items(itemid))";
+    db.query(books,(err,result)=>{
+        if(err) console.log(err);
+        // else console.log(result);
+    });
     //...................insert data of seller...............................
 
     var insert_seller="INSERT INTO sellers (sellerid,sname,password,dob,address) values ('" + req.body.email+ "','"+req.body.sname+"','"+req.body.password+"','"+req.body.dob+"','"+req.body.address+"')";
