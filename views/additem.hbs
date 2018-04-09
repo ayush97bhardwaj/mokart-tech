@@ -1,38 +1,35 @@
 <div class="container">
     <h2 class="center-align">Add Items</h2>
-    <form action="/signup/seller" method="post" autocomplete="off">
+    <form action="/seller/additem" method="post" autocomplete="off">
 
         <div class="row">
-            <div class="input-field col s12">
-                <input id="itemName" type="text" class="validate" name="iname">
+            <div class="input-field col s6">
+                <input id="itemName" type="text" class="validate" name="iname" required>
                 <label for="itemName">Item Name</label>
             </div>
+            <div class="input-field col s6">
+                <input id="itemQuantity" type="number" class="validate" name="qty" required>
+                <label for="itemQuantity">Item Quantity</label>
+            </div>
         </div>
 
+
         <div class="row">
-            <div class="input-field col s12">
-                <input id="price" type="number" step="0.01" class="validate" name="price">
+            <div class="input-field col s6">
+                <input id="price" type="number" step="0.01" class="validate" name="price" required>
                 <label for="price">Item Price</label>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="description" type="text" class="validate" name="desc">
-                <label for="description">Item Description</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="shippingCost" type="number" step="0.01" class="validate" name="shipcost">
+            <div class="input-field col s6">
+                <input id="shippingCost" type="number" step="0.01" class="validate" name="shipcost" required>
                 <label for="shippingCost">Item Shipping Cost</label>
             </div>
+            
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <input id="itemQuantity" type="number" class="validate" name="qty">
-                <label for="itemQuantity">Item Quantity</label>
+                <input id="description" type="text" class="validate" name="desc" required>
+                <label for="description">Item Description</label>
             </div>
         </div>
 

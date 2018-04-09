@@ -66,7 +66,7 @@ router.post('/customer', function(req, res, next) {
         });
         
         var insert_city="INSERT INTO city (pincode,city) values ('" + addr.pincode+ "','"+addr.city+"')";
-        // console.log(insert_state);
+        console.log(insert_state);
         db.query(insert_city,function(err,result){
             if(err) console.log(err);
             else console.log(result);
