@@ -4,14 +4,14 @@
     <form action="/signup/customer" method="post" autocomplete="off">
 
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8">
                 <input type="text" name="cname"/>
                 <label for="cname">Name</label>
             </div>
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8">
                 <input type="date" name="dob"/>
                 <label for="dob">Date of Birth</label>
             </div>
@@ -19,21 +19,21 @@
 
 
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8">
                 <input type="email" name="email" id="email"/>
                 <label for="email">Email</label>
             </div>
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8">
                 <input type="password" name="password" id="password"/>
                 <label for="password">password</label>
             </div>
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8">
                 <input type="text" name="phone[0]"/>
                 <label>Phone Numbers</label>
                 <p id="addphone">add another number</p>
@@ -54,12 +54,12 @@
         <p id="addr">add address</p>
 
         <div class="row">
-            <div class="input-field col s12 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+            <div class="input-field col s8 center-align">
+                <input type="submit" class="waves-effect waves-light btn-large" id="submit">Submit</input>
             </div>
         </div>
         <br>
-        <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+        {{!-- <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input> --}}
     </form>
 </div>
 
