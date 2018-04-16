@@ -5,29 +5,29 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="cname"/>
+                <input type="text" name="cname" required/>
                 <label for="cname">Name</label>
             </div>
             <div class="input-field col s6">
-                <input type="date" name="dob"/>
+                <input type="date" name="dob" required/>
                 <label for="dob">Date of Birth</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="email" name="email" id="email"/>
+                <input type="email" name="email" id="email" required/>
                 <label for="email">Email</label>
             </div>
             <div class="input-field col s6">
-                <input type="password" name="password" id="password"/>
+                <input type="password" name="password" id="password" required/>
                 <label for="password">password</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="phone[0]" id="phone0"/>
+                <input type="text" name="phone[0]" id="phone0" required/>
                 <label>Phone Numbers</label>
                 <!--<p id="addphone">add another number</p>-->
             </div>
@@ -40,25 +40,25 @@
         <h5 class="center-align">Address</h5>
         <div class="row">
             <div class="input-field col s3">
-                <input type="text" name='address[0][houseno]'/>
+                <input type="text" name='address[0][houseno]' required/>
                 <label for="houseno">House no.</label>
             </div>
             <div class="input-field col s9">
-                <input type="text" name='address[0][streetno]'/>
+                <input type="text" name='address[0][streetno]' required/>
                 <label for="streeno">Street Address</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s4">
-                <input type="text" name='address[0][city]'/>
+                <input type="text" name='address[0][city]' required/>
                 <label for="city">City</label>
             </div>
             <div class="input-field col s4">
-                <input type="text" name='address[0][state]'/>
+                <input type="text" name='address[0][state]' required/>
                 <label for="state">State</label>
             </div>
             <div class="input-field col s4">
-                <input type="text" name='address[0][pincode]'/>
+                <input type="text" name='address[0][pincode]' required>
                 <label for="pincode">Pincode</label>
             </div>
         </div>

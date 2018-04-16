@@ -4,15 +4,16 @@
 <br>
 <a href="/signin">signin</a>
 </div>
-
+<h5>{{err}}</h5>
 <h1>These are the list of latest items</h1>
-{{!-- {{#each items}}
-<h1>{{this.iname}}</h1>
-<h2>{{this.itemid}}</h2>
-<h3>{{this.price}}</h3>
-<h4>{{this.description}}</h4>
-<h5>{{this.shipcost}}</h5>
-<h6>{{this.sellerid}}</h6>
-<h6>{{this.iquantity}}</h6>
+{{#each items}}
+<h6>name : {{this.iname}}</h6>
+<h6>itemid : {{this.itemid}}</h6>
+<h6>price : {{this.price}}</h6>
+<h6>description : {{this.description}}</h6>
+<h6>shipping cost : {{this.shipcost}}</h6>
+<h6>seller email id :{{this.sellerid}}</h6>
+<h6>quantity : {{this.iquantity}}</h6>
 <br>
-{{/each}} --}}
+<br>
+{{/each}}
