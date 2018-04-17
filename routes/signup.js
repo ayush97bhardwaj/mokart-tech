@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var db=require('../db');
 /* GET home page. */
+router.get('/',(req,res,next)=>{
+    res.render('signup',{'title':'choose signup'});
+});
+
 router.get('/customer', function(req, res, next) {
     res.render('signup_cust', { title: 'Customer SignUp' });
 });
@@ -54,7 +58,9 @@ router.post('/customer', function(req, res, next) {
     // console.log(insert_cust);
     db.query(insert_cust,function(err,result){
         if(err) console.log(err);
-        else console.log(result);
+        else {
+            console.log(result)
+        };
     });
 
     req.body.address.forEach(addr=>{

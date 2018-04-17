@@ -10,16 +10,36 @@
     <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {{!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> --}}
+
   </head>
   <body>
+  {{#if loggedin}}
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo center">Mokart Tech</a>
+      <ul class="right hide-on-med-and-down">
+        {{#ifCond user.type 'seller'}}
+        <li><a href="/">seller: {{user.sname}}</a></li>
+        <li><a href="/logout">logout</a></li>
+        {{else}}
+        <li><a href="/"><div>customer</div><div>{{user.cname}}</div></a></li>
+        <li><a href="/logout">logout</a></li>
+        <li><a href="#"><i class="material-icons">add_shopping_cart</i></a></li>
+        {{/ifCond}}
+      </ul>
+    </div>
+  </nav>
+  {{else}}
   <nav>
       <div class="nav-wrapper">
           <a href="/" class="brand-logo center">Mokart Tech</a>
           <ul class="right hide-on-med-and-down">
-              <li><a href="#"><i class="material-icons">add_shopping_cart</i></a></li>
+              <li><a href="/signin">signin</a></li>
+              <li><a href="/signup">signup</a></li>
           </ul>
       </div>
   </nav>
+  {{/if}}
     {{{body}}}
   </body>
 </html>
