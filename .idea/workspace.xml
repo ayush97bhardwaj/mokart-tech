@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e385ef1-f098-4afc-8be5-7fc9b3686910" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/additem.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/additem.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/signup_cust.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/signup_cust.hbs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -28,16 +26,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signup_cust.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="signup_cust.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/signup_cust.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1444">
-              <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+            <state relative-caret-position="1140">
+              <caret line="60" column="73" lean-forward="true" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signup.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="additem.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/additem.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="760">
+              <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signup.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/signup.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -101,9 +108,9 @@
         <option value="$PROJECT_DIR$/views/index.hbs" />
         <option value="$PROJECT_DIR$/views/signin.hbs" />
         <option value="$PROJECT_DIR$/views/layout.hbs" />
-        <option value="$PROJECT_DIR$/views/signup_cust.hbs" />
         <option value="$PROJECT_DIR$/views/signup_seller.hbs" />
         <option value="$PROJECT_DIR$/views/additem.hbs" />
+        <option value="$PROJECT_DIR$/views/signup_cust.hbs" />
       </list>
     </option>
   </component>
@@ -206,7 +213,7 @@
       <workItem from="1523163413517" duration="1022000" />
       <workItem from="1523174014900" duration="1276000" />
       <workItem from="1523198388565" duration="10390000" />
-      <workItem from="1523861081705" duration="265000" />
+      <workItem from="1523861081705" duration="2403000" />
     </task>
     <task id="LOCAL-00001" summary="Add Items Page and new UI">
       <created>1523201323628</created>
@@ -254,21 +261,21 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13955000" />
+    <option name="totallyTimeSpent" value="16093000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49469495" visible="true" weight="0.11848341" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49403974" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32977778" />
-      <window_info id="npm" order="2" sideWeight="0.50530505" side_tool="true" weight="0.12164297" />
+      <window_info active="true" id="npm" order="2" sideWeight="0.5059603" side_tool="true" visible="true" weight="0.11848341" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.31644446" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3288889" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3288889" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -277,7 +284,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32977778" />
     </layout>
     <layout-to-restore>
@@ -490,13 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/signup_cust.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1444">
-          <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/signup_seller.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1007">
@@ -506,13 +505,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/additem.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
+        <state relative-caret-position="760">
           <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/signup.js">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/signup_cust.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="60" column="73" lean-forward="true" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="73" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
