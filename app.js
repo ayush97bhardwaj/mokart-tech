@@ -14,6 +14,8 @@ var users = require('./routes/users');
 var signup = require('./routes/signup');
 var signin=require('./routes/signin');
 var additem=require('./routes/add');
+var dashboard = require('./routes/dashboard');
+// var customerDashboard = require('./routes/customerDashboard');
 
 var db=require('./db');
 
@@ -60,11 +62,13 @@ function isloggedin(req,res,next){
     next();
 };
 
-app.use('/', index);
+app.use('/',index);
 app.use('/users', users);
 app.use('/signup',isloggedin,signup);
 app.use('/signin',isloggedin,signin);
 app.use('/seller',additem);
+app.use('/dashboard',dashboard);
+// app.use('/dashboard',customerDashboard);
 app.get('/logout',(req,res,next)=>{
   req.session.destroy(function(err){
     if(err) console.log(err);

@@ -69,8 +69,8 @@
         </div>
         <!--<p id="addr">add address</p>-->
         <div class="row">
-            <div class="input-field col s8 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" id="submit" value="submit"></input>
+            <div class="input-field col s12 center-align">
+                <button type="submit" class="btn-large" id="submit">Submit</button>
             </div>
         </div>
     </form>
@@ -140,7 +140,6 @@
     var states = "Andaman and Nicobar Islands|Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chandigarh|Chhattisgarh|Dadra and Nagar Haveli|Daman and Diu|Delhi|Goa|Gujarat|Haryana|Himachal Pradesh|Jammu and Kashmir|Jharkhand|Karnataka|Kerala|Lakshadweep|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Orissa|Pondicherry|Punjab|Rajasthan|Sikkim|Tamil Nadu|Tripura|Uttar Pradesh|Uttaranchal|West Bengal";
 
     states = states.split('|');
-    console.log(states);
     for (var k = 0; k < states.length; k++) {
         console.log(states[k]);
     }
@@ -149,6 +148,5 @@
     for (var f = 0; f < states.length; f++) {
         option += '<option value="' + states[f] + '">' + states[f] + '</option>';
     }
-    console.log(option)
     $('#states').append(option);
 </script>

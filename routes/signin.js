@@ -94,7 +94,7 @@ router.post('/seller',(req,res,next)=>{
             res.render('signin',{err:'email not registered for seller'});
         }
         else{
-            // console.log(result[0].password);
+            //console.log(result[0].password);
             if(result[0].password != req.body.password){
                 res.render('signin',{err:'wrong password for registered seller',email:req.body.email});
             }
@@ -105,6 +105,7 @@ router.post('/seller',(req,res,next)=>{
                     if(err) console.log(err);
                     else{
                         req.session.user=result[0];
+                        // console.log("HIIIIIII---------"+ req.session.user);
                         req.session.user.type='seller';
                         delete req.session.user.password;
                         res.redirect('/signin');

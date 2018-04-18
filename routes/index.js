@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   //     res.render('index', { title: 'Home',items:result});
   //   }
   // });
-  
+
   var countquery="select * from items";
   db.query(countquery,(err,result)=>{
     if(err) console.log(err);

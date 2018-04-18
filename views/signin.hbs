@@ -2,10 +2,10 @@
     <br>
     <div class="row">
         <div class="col s3 offset-m3">
-            <a id="cust" class="waves-effect waves-light btn">Customer SignIn</a>
+            <a id="cust" class="btn-large">Customer SignIn</a>
         </div>
         <div class="col s3 right-align">
-            <a id="seller" class="waves-effect waves-light btn">Seller SignIn</a>
+            <a id="seller" class="btn-large">Seller SignIn</a>
         </div>
     </div>
     <!--<h4 id="cust">customer</h4>-->
@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="input-field col s12 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+                <button type="submit" class="btn-large" id="submit">Submit</button>
             </div>
         </div>
     </form>
@@ -49,21 +49,25 @@
         </div>
         <div class="row">
             <div class="input-field col s12 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" id="submit"></input>
+                <button type="submit" class="btn-large" id="submit">Submit</button>
             </div>
         </div>
     </form>
 </div>
 <script>
-    $("#cform").show();
+    $("#cform").hide();
     $("#sform").hide();
 
     $("#cust").click(() => {
         $("#cform").show();
+        $("#cust").addClass("disabled");
+        $("#seller").removeClass("disabled");
         $("#sform").hide();
     });
     $("#seller").click(() => {
         $("#sform").show();
+        $("#cust").removeClass("disabled");
+        $("#seller").addClass("disabled");
         $("#cform").hide();
     });
 </script>
