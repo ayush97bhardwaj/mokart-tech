@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
     }
     else{
         console.log(123456);
-        res.render('signin', { title: 'signin' });
+        res.render('signin', { title: 'signin'});
     }
 });
 
@@ -41,12 +41,12 @@ router.post('/customer',(req,res,next)=>{
     db.query(pass,(err,result)=>{
         if(err) console.log(err);
         else if(result.length==0){
-            res.render('signin',{err:'email not registered as customer'});
+            res.render('signin',{err:'email not registered as customer',trysignin:'customer'});
         }
         else{
             // console.log(result[0].password);
             if(result[0].password != req.body.password){
-                res.render('signin',{err:'wrong password for registered customer',email:req.body.email});
+                res.render('signin',{err:'wrong password for registered customer',email:req.body.email,trysignin:'customer'});
             }
             else {
                 var countquery="select * from customers where custid='"+req.body.email+"'";
@@ -91,12 +91,12 @@ router.post('/seller',(req,res,next)=>{
     db.query(pass,(err,result)=>{
         if(err) console.log(err);
         else if(result.length==0){
-            res.render('signin',{err:'email not registered for seller'});
+            res.render('signin',{err:'email not registered for seller',trysignin:'seller'});
         }
         else{
             //console.log(result[0].password);
             if(result[0].password != req.body.password){
-                res.render('signin',{err:'wrong password for registered seller',email:req.body.email});
+                res.render('signin',{err:'wrong password for registered seller',email:req.body.email,trysignin:'seller'});
             }
             else {
                 // req.session.sellerid=req.body.email;
