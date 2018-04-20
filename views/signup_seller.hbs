@@ -4,34 +4,34 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="sname"/>
+                <input type="text" name="sname" required/>
                 <label for="sname">Name</label>
             </div>
             <div class="input-field col s6">
-                <input type="date" name="dob"/>
+                <input type="date" name="dob" required/>
                 <label for="dob">Date of Birth</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="email" autocomplete="off"/>
+                <input type="text" name="email" autocomplete="off" required/>
                 <label for="email">Email Id</label>
             </div>
             <div class="input-field col s6">
-                <input type="password" name="password" id="password"/>
+                <input type="password" name="password" id="password" required/>
                 <label for="password">password</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="phone[0]"/>
+                <input type="text" name="phone[0]" required/>
                 <label>Phone Numbers</label>
                 <!--<p id="addphone">add another number</p>-->
             </div>
             <div class="input-field col s6">
-                <input type="text" name="phone[1]"/>
+                <input type="text" name="phone[1]" required/>
                 <label>Alternate Phone Number</label>
             </div>
         </div>
@@ -39,7 +39,7 @@
         <h5 class="center-align">Address</h5>
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" name='address'/>
+                <input type="text" name='address' required/>
                 <label for="addressSeller">Address</label>
             </div>
         </div>
@@ -51,13 +51,9 @@
 
         <div class="row">
             <div class="input-field col s12 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" value="submit"/>
+                <button type="submit" class="btn-large" id="submit">Submit</button>
             </div>
         </div>
 
     </form>
 </div>
-
-<script>
-    
-</script>

@@ -5,29 +5,29 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="cname"/>
+                <input type="text" name="cname" required/>
                 <label for="cname">Name</label>
             </div>
             <div class="input-field col s6">
-                <input type="date" name="dob"/>
+                <input type="date" name="dob" required/>
                 <label for="dob">Date of Birth</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="email" name="email" id="email"/>
+                <input type="email" name="email" id="email" required/>
                 <label for="email">Email</label>
             </div>
             <div class="input-field col s6">
-                <input type="password" name="password" id="password"/>
+                <input type="password" name="password" id="password" required/>
                 <label for="password">password</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="phone[0]" id="phone0"/>
+                <input type="text" name="phone[0]" id="phone0" required/>
                 <label>Phone Numbers</label>
                 <!--<p id="addphone">add another number</p>-->
             </div>
@@ -40,33 +40,37 @@
         <h5 class="center-align">Address</h5>
         <div class="row">
             <div class="input-field col s3">
-                <input type="text" name='address[0][houseno]'/>
+                <input type="text" name='address[0][houseno]' required/>
                 <label for="houseno">House no.</label>
             </div>
             <div class="input-field col s9">
-                <input type="text" name='address[0][streetno]'/>
+                <input type="text" name='address[0][streetno]' required/>
                 <label for="streeno">Street Address</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s4">
-                <input type="text" name='address[0][city]'/>
+                <input type="text" name='address[0][city]' required/>
                 <label for="city">City</label>
             </div>
+            <!--<div class="input-field col s4">-->
+            <!--<input type="text" name='address[0][state]'/>-->
+            <!--<label for="state">State</label>-->
+            <!--</div>-->
             <div class="input-field col s4">
-                <input type="text" name='address[0][state]'/>
-                <label for="state">State</label>
+                <select id="states" name="address[0][states]" class="browser-default">
+                    <option disabled selected>Choose State</option>
+                </select>
             </div>
             <div class="input-field col s4">
-                <input type="text" name='address[0][pincode]'/>
+                <input type="text" name='address[0][pincode]' required>
                 <label for="pincode">Pincode</label>
             </div>
         </div>
         <!--<p id="addr">add address</p>-->
-
         <div class="row">
-            <div class="input-field col s8 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" id="submit" value="submit"></input>
+            <div class="input-field col s12 center-align">
+                <button type="submit" class="btn-large" id="submit">Submit</button>
             </div>
         </div>
     </form>
@@ -86,61 +90,63 @@
     $("#email").change(() => {
         var email = $("#email").val();
         console.log(email);
-        if (re.test(email)){
+        if (re.test(email)) {
             //vaild
-            $("#submit").prop("disabled",false);
+            $("#submit").prop("disabled", false);
         }
-        else{
+        else {
             console.log('not valid email');
-            $("#submit").attr("disabled","disabled");
+            $("#submit").attr("disabled", "disabled");
         }
         var v1 = $("#phone0").val();
-        if(v1=='')
-        {
-            $("#submit").attr("disabled","disabled");
+        if (v1 == '') {
+            $("#submit").attr("disabled", "disabled");
         }
     });
-    var phonere=/^[789]\d{9}$/;
-    $('#phone0').change(function(req,res){
+    var phonere = /^[789]\d{9}$/;
+    $('#phone0').change(function (req, res) {
         var phone = $("#phone0").val();
         console.log(phone);
-        if (phonere.test(phone)){
+        if (phonere.test(phone)) {
             //vaild
-            $("#submit").prop("disabled",false);
+            $("#submit").prop("disabled", false);
         }
-        else{
+        else {
             console.log('not valid email');
-            $("#submit").attr("disabled","disabled");
+            $("#submit").attr("disabled", "disabled");
 
         }
     });
     var v1 = $("#phone0").val();
-    if(v1=='')
-    {
-        $("#submit").attr("disabled","disabled");
+    if (v1 == '') {
+        $("#submit").attr("disabled", "disabled");
     }
-    
-    $('#phone1').change(function(req,res){
+
+    $('#phone1').change(function (req, res) {
         var phone = $("#phone1").val();
         console.log(phone);
-        if (phonere.test(phone)){
+        if (phonere.test(phone)) {
             //vaild
-            $("#submit").prop("disabled",false);
+            $("#submit").prop("disabled", false);
         }
-        else{
+        else {
             console.log('not valid email');
-            $("#submit").attr("disabled","disabled");
+            $("#submit").attr("disabled", "disabled");
         }
-        if(phone == ''){
-            $("#submit").prop("disabled",false);
+        if (phone == '') {
+            $("#submit").prop("disabled", false);
         }
     });
     var states = "Andaman and Nicobar Islands|Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chandigarh|Chhattisgarh|Dadra and Nagar Haveli|Daman and Diu|Delhi|Goa|Gujarat|Haryana|Himachal Pradesh|Jammu and Kashmir|Jharkhand|Karnataka|Kerala|Lakshadweep|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Orissa|Pondicherry|Punjab|Rajasthan|Sikkim|Tamil Nadu|Tripura|Uttar Pradesh|Uttaranchal|West Bengal";
-    
-    states=states.split('|');
-    console.log(states);
-    for(var k=0;k<states.length;k++)
-    {
+
+    states = states.split('|');
+    for (var k = 0; k < states.length; k++) {
         console.log(states[k]);
     }
+
+    var option = '';
+    for (var f = 0; f < states.length; f++) {
+        option += '<option value="' + states[f] + '">' + states[f] + '</option>';
+    }
+    $('#states').append(option);
 </script>

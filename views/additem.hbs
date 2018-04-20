@@ -8,22 +8,61 @@
                 <label for="itemName">Item Name</label>
             </div>
             <div class="input-field col s6">
-                <input id="itemQuantity" type="number" class="validate" name="qty" required>
-                <label for="itemQuantity">Item Quantity</label>
+                <select id="categories" name="itemCategory" class="browser-default" required>
+                    <option disabled selected>Choose Category</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row" id="books">
+            <div class="input-field col s6">
+                <input id="author" type="text" class="validate" name="author">
+                <label for="author">Enter Author</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="publisher" type="text" class="validate" name="publisher">
+                <label for="publisher">Enter Publisher</label>
+            </div>
+
+        </div>
+
+        <div class="row" id="electronics">
+            <div class="input-field col s12">
+                <input id="warranty" type="text" class="validate" name="warranty">
+                <label for="warranty">Enter Warranty</label>
+            </div>
+        </div>
+
+        <div class="row" id="fashion">
+            <div class="input-field col s6">
+                <input id="size" type="text" class="validate" name="size">
+                <label for="size">Enter Size</label>
+            </div>
+        </div>
+
+        <div class="row" id="sports">
+            <div class="input-field col s6">
+                <input id="size" type="text" class="validate" name="size">
+                <label for="size">Enter Size</label>
             </div>
         </div>
 
 
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s4">
+                <input id="itemQuantity" type="number" class="validate" name="qty" required>
+                <label for="itemQuantity">Item Quantity</label>
+            </div>
+            <div class="input-field col s4">
                 <input id="price" type="number" step="0.01" class="validate" name="price" required>
                 <label for="price">Item Price</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s4">
                 <input id="shippingCost" type="number" step="0.01" class="validate" name="shipcost" required>
                 <label for="shippingCost">Item Shipping Cost</label>
             </div>
-            
+
         </div>
 
         <div class="row">
@@ -35,8 +74,62 @@
 
         <div class="row">
             <div class="input-field col s12 center-align">
-                <input type="submit" class="waves-effect waves-light btn-large" value="submit"/>
+                <button type="submit" class="btn-large" id="submit">Submit</button>
             </div>
         </div>
     </form>
 </div>
+<script>
+    var categories = "books|electronics|fashion|sports";
+
+    categories = categories.split('|');
+
+    var option = '';
+    for (var f = 0; f < categories.length; f++) {
+        option += '<option value="' + categories[f] + '">' + categories[f] + '</option>';
+    }
+    $('#categories').append(option);
+    $("#books").hide();
+    $("#electronics").hide();
+    $("#fashion").hide();
+    $("#sports").hide();
+
+    $(function() {
+        $("#categories").on("change",function() {
+            var category =
+                    $(this).children("option").filter(":selected").text();
+            console.log(category);
+            $(".hideable").hide();
+            if(category=="books")
+            {
+                $("#books").show();
+                $("#electronics").hide();
+                $("#fashion").hide();
+                $("#sports").hide();
+
+            }
+            else if(category=="electronics")
+            {
+                $("#books").hide();
+                $("#electronics").show();
+                $("#fashion").hide();
+                $("#sports").hide();
+            }
+            else if(category=="fashion")
+            {
+                $("#books").hide();
+                $("#electronics").hide();
+                $("#fashion").show();
+                $("#sports").hide();
+            }
+            else if(category=="sports")
+            {
+                $("#books").hide();
+                $("#electronics").hide();
+                $("#fashion").hide();
+                $("#sports").show();
+            }
+        }).change();
+    });
+
+</script>

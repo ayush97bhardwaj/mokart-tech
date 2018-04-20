@@ -1,18 +1,34 @@
-<a href="/signup/customer">Signup Customer</a>
-<br>
-<a href="/signup/seller">Signup seller</a>
-<br>
-<a href="/signin">signin</a>
+<h5>{{err}}</h5>
+<h1>These are the list of items</h1>
+<div class="row">
+    {{#each items}}
+        <div class="col l3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample.jpg">
+                    <a class="btn-floating halfway-fab red"><i
+                            class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                    <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
+                    <label>Description: </label><br>
+                    <p style="padding-top: 5px">{{this.description}}</p>
+                    <p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"
+                                                                                    style="padding-top: 5px">{{this.shipcost}}
+                        ₹</span></p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
 </div>
-
-<h1>These are the list of latest items</h1>
-{{!-- {{#each items}}
-<h1>{{this.iname}}</h1>
-<h2>{{this.itemid}}</h2>
-<h3>{{this.price}}</h3>
-<h4>{{this.description}}</h4>
-<h5>{{this.shipcost}}</h5>
-<h6>{{this.sellerid}}</h6>
-<h6>{{this.iquantity}}</h6>
-<br>
-{{/each}} --}}
+        <!--{{#each items}}-->
+<!--<h6>name : {{this.iname}}</h6>-->
+<!--<h6>itemid : {{this.itemid}}</h6>-->
+<!--<h6>price : {{this.price}}</h6>-->
+<!--<h6>description : {{this.description}}</h6>-->
+<!--<h6>shipping cost : {{this.shipcost}}</h6>-->
+<!--<h6>seller email id :{{this.sellerid}}</h6>-->
+<!--<h6>quantity : {{this.iquantity}}</h6>-->
+<!--<br>-->
+<!--<br>-->
+        <!--{{/each}}-->

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession=require('express-session');
 var session=require('client-sessions');
+var hbs=require('hbs');
 require('dotenv').load();
 
 var index = require('./routes/index');
@@ -13,6 +14,8 @@ var users = require('./routes/users');
 var signup = require('./routes/signup');
 var signin=require('./routes/signin');
 var additem=require('./routes/add');
+var dashboard = require('./routes/dashboard');
+// var customerDashboard = require('./routes/customerDashboard');
 
 var db=require('./db');
 
@@ -21,6 +24,12 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -44,16 +53,22 @@ app.use(session({
 //   saveUninitialized: true
 // }));
 
-// app.use((req,res,next)=>{
-  
-//   next();
-// });
+function isloggedin(req,res,next){
+  if(req.session && req.session.user)
+  {
+    res.redirect('/')
+  }
+  else
+    next();
+};
 
-app.use('/', index);
+app.use('/',index);
 app.use('/users', users);
-app.use('/signup',signup);
-app.use('/signin',signin);
+app.use('/signup',isloggedin,signup);
+app.use('/signin',isloggedin,signin);
 app.use('/seller',additem);
+app.use('/dashboard',dashboard);
+// app.use('/dashboard',customerDashboard);
 app.get('/logout',(req,res,next)=>{
   req.session.destroy(function(err){
     if(err) console.log(err);
