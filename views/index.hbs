@@ -17,29 +17,29 @@
     </div>
 </form>
 
-<!--<div class="row">-->
-    <!--{{#each items}}-->
-        <!--<div class="col l3">-->
-            <!--<div class="card">-->
-                <!--<div class="card-image">-->
-                    <!--<img src="/images/sample.jpg">-->
-                    <!--{{#ifCond ../user.type 'customer'}}-->
-                        <!--<a class="btn-floating halfway-fab red"><i-->
-                                <!--class="material-icons">add</i></a>-->
-                    <!--{{/ifCond}}-->
-                <!--</div>-->
-                <!--<div class="card-content">-->
-                    <!--<p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>-->
-                    <!--<label>Description: </label><br>-->
-                    <!--<p style="padding-top: 5px">{{this.description}}</p>-->
-                    <!--<p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"-->
-                                                                                    <!--style="padding-top: 5px">{{this.shipcost}}-->
-                        <!--₹</span></p>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--{{/each}}-->
-<!--</div>-->
+<div class="row">
+    {{#each items}}
+        <div class="col l3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/sample.jpg">
+                    {{#ifCond ../user.type 'customer'}}
+                        <a class="btn-floating halfway-fab red"><i
+                                class="material-icons">add</i></a>
+                    {{/ifCond}}
+                </div>
+                <div class="card-content">
+                    <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
+                    <label>Description: </label><br>
+                    <p style="padding-top: 5px">{{this.description}}</p>
+                    <p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"
+                                                                                    style="padding-top: 5px">{{this.shipcost}}
+                        ₹</span></p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
         <!--{{#each items}}-->
 <!--<h6>name : {{this.iname}}</h6>-->
 <!--<h6>itemid : {{this.itemid}}</h6>-->

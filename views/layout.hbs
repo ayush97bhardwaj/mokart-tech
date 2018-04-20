@@ -18,37 +18,31 @@
     <li><a href="/signup/seller">Seller</a></li>
 </ul>
 {{#if loggedin}}
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper red darken-1">
-                <a href="/" class="brand-logo center">Mokart Tech</a>
-                <ul class="right hide-on-med-and-down">
-                    {{#ifCond user.type 'seller'}}
-                        <li><a class="tooltipped" href="/dashboard/{{user.sellerid}}" data-position="bottom"
-                               data-tooltip="Seller">{{user.sname}}
-                        </a></li>
-                        <ul id="customer" class="dropdown-content">
-                            <li><a href="#!">Seller</a></li>
-                        </ul>
-                        <li><a class="tooltipped" href="/seller/add" data-position="bottom" data-tooltip="Add Item"><i
-                                class="material-icons">add_circle_outline</i></a></li>
-                        <li><a href="/logout">logout</a></li>
-                    {{else}}
-                        <li><a class="tooltipped" href="/dashboard/{{user.custid}}" data-position="bottom"
-                               data-tooltip="Customer">{{user.cname}}
-                        </a></li>
+    <nav>
+        <div class="nav-wrapper red darken-1">
+            <a href="/" class="brand-logo center">Mokart Tech</a>
+            <ul class="right hide-on-med-and-down">
+                {{#ifCond user.type 'seller'}}
+                    <li><a class="tooltipped" href="/dashboard/{{user.sellerid}}" data-position="bottom" data-tooltip="Seller">{{user.sname}}
+                    </a></li>
+                    <ul id="customer" class="dropdown-content">
+                        <li><a href="#!">Seller</a></li>
+                    </ul>
+                    <li><a class="tooltipped" href="/seller/add" data-position="bottom" data-tooltip="Add Item"><i class="material-icons">add_circle_outline</i></a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {{else}}
+                    <li><a class="tooltipped" href="/dashboard/{{user.custid}}" data-position="bottom" data-tooltip="Customer">{{user.cname}}
+                    </a></li>
 
-                        <ul id="customer" class="dropdown-content">
-                            <li><a href="#!">Customer</a></li>
-                        </ul>
-                        <li><a href="#" class="tooltipped" data-position="bottom" data-tooltip="View Cart"><i
-                                class="material-icons">add_shopping_cart</i></a></li>
-                        <li><a href="/logout">logout</a></li>
-                    {{/ifCond}}
-                </ul>
-            </div>
-        </nav>
-    </div>
+                    <ul id="customer" class="dropdown-content">
+                        <li><a href="#!">Customer</a></li>
+                    </ul>
+                    <li><a href="#" class="tooltipped" data-position="bottom" data-tooltip="View Cart"><i class="material-icons">add_shopping_cart</i></a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {{/ifCond}}
+            </ul>
+        </div>
+    </nav>
 {{else}}
     <div class="navbar-fixed">
         <nav>
@@ -57,7 +51,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a class="dropdown-trigger" href="#!" data-target="signUp">Sign Up
                         <i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="/signin">signin</a></li>
+                    <li><a href="/signin">Sign In</a></li>
                 </ul>
 
             </div>
