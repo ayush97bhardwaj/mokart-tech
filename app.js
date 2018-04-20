@@ -15,6 +15,7 @@ var signup = require('./routes/signup');
 var signin=require('./routes/signin');
 var additem=require('./routes/add');
 var dashboard = require('./routes/dashboard');
+var viewItems = require('./routes/viewItems');
 // var customerDashboard = require('./routes/customerDashboard');
 
 var db=require('./db');
@@ -68,6 +69,7 @@ app.use('/signup',isloggedin,signup);
 app.use('/signin',isloggedin,signin);
 app.use('/seller',additem);
 app.use('/dashboard',dashboard);
+app.use('/viewItems',viewItems);
 // app.use('/dashboard',customerDashboard);
 app.get('/logout',(req,res,next)=>{
   req.session.destroy(function(err){

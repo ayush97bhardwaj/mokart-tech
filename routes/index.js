@@ -11,15 +11,16 @@ router.get('/', function(req, res, next) {
   //   }
   // });
 
-  var countquery="select * from items";
-  db.query(countquery,(err,result)=>{
-    if(err) console.log(err);
-    else{
-      if(req.session.user)
-        res.render('index', { title: 'Home',items:result,loggedin:true,user:req.session.user});
-      else
-        res.render('index', { title: 'Home',items:result,loggedin:false});
-    }
-  });
+
+    var countquery = "select * from items";
+    db.query(countquery, (err, result) => {
+        if (err) console.log(err);
+        else {
+            if (req.session.user)
+                res.render('index', {title: 'Home', loggedin: true, user: req.session.user});
+            else
+                res.render('index', {title: 'Home', loggedin: false});
+        }
+    });
 });
 module.exports = router;

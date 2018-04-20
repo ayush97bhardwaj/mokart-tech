@@ -9,7 +9,6 @@ router.get('/add',(req,res,next)=>{
 
 router.post('/additem',(req,res,next)=>{
     var countquery="select count(*) from items as i where i.sellerid='"+req.session.user.sellerid+"'";
-    console.log("hi hello"+req.session.user.sellerid);
     db.query(countquery,(err,result)=>{
         if(err) console.log(err);
         else{

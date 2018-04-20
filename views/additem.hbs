@@ -35,14 +35,14 @@
         </div>
 
         <div class="row" id="fashion">
-            <div class="input-field col s6">
+            <div class="input-field col s6 offset-m3">
                 <input id="size" type="text" class="validate" name="size">
                 <label for="size">Enter Size</label>
             </div>
         </div>
 
         <div class="row" id="sports">
-            <div class="input-field col s6">
+            <div class="input-field col s6 offset-m3">
                 <input id="size" type="text" class="validate" name="size">
                 <label for="size">Enter Size</label>
             </div>
@@ -89,6 +89,8 @@
         option += '<option value="' + categories[f] + '">' + categories[f] + '</option>';
     }
     $('#categories').append(option);
+
+
     $("#books").hide();
     $("#electronics").hide();
     $("#fashion").hide();
@@ -96,6 +98,7 @@
 
     $(function() {
         $("#categories").on("change",function() {
+            console.log("I am here ");
             var category =
                     $(this).children("option").filter(":selected").text();
             console.log(category);

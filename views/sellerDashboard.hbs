@@ -1,1 +1,23 @@
-<h1 align="center">{{user.sname}} hi seller</h1>
+<h1 align="center">hi {{user.sname}} seller</h1>
+<h1>These are the list of items</h1>
+<div class="row">
+    {{#each items}}
+        <div class="col l3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="/images/sample.jpg">
+                    <a class="btn-floating halfway-fab red"><i
+                            class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                    <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
+                    <label>Description: </label><br>
+                    <p style="padding-top: 5px">{{this.description}}</p>
+                    <p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"
+                                                                                    style="padding-top: 5px">{{this.shipcost}}
+                        ₹</span></p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

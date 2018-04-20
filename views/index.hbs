@@ -1,26 +1,45 @@
 <h5>{{err}}</h5>
-<h1>These are the list of items</h1>
-<div class="row">
-    {{#each items}}
-        <div class="col l3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="images/sample.jpg">
-                    <a class="btn-floating halfway-fab red"><i
-                            class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
-                    <label>Description: </label><br>
-                    <p style="padding-top: 5px">{{this.description}}</p>
-                    <p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"
-                                                                                    style="padding-top: 5px">{{this.shipcost}}
-                        ₹</span></p>
-                </div>
-            </div>
+<h1 align="center">These are the list of items</h1>
+<form action="/viewItems/" method="post" autocomplete="off">
+
+    <div class="row">
+        <div class="input-field col s6 offset-m3">
+            <select id="categories" name="itemCategory" class="browser-default" required>
+                <option disabled selected>Choose Category</option>
+            </select>
         </div>
-    {{/each}}
-</div>
+
+    </div>
+    <div class="row">
+        <div class="input-field col s12 center-align">
+            <button type="submit" class="btn-large" id="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<!--<div class="row">-->
+    <!--{{#each items}}-->
+        <!--<div class="col l3">-->
+            <!--<div class="card">-->
+                <!--<div class="card-image">-->
+                    <!--<img src="/images/sample.jpg">-->
+                    <!--{{#ifCond ../user.type 'customer'}}-->
+                        <!--<a class="btn-floating halfway-fab red"><i-->
+                                <!--class="material-icons">add</i></a>-->
+                    <!--{{/ifCond}}-->
+                <!--</div>-->
+                <!--<div class="card-content">-->
+                    <!--<p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>-->
+                    <!--<label>Description: </label><br>-->
+                    <!--<p style="padding-top: 5px">{{this.description}}</p>-->
+                    <!--<p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"-->
+                                                                                    <!--style="padding-top: 5px">{{this.shipcost}}-->
+                        <!--₹</span></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--{{/each}}-->
+<!--</div>-->
         <!--{{#each items}}-->
 <!--<h6>name : {{this.iname}}</h6>-->
 <!--<h6>itemid : {{this.itemid}}</h6>-->
@@ -32,3 +51,14 @@
 <!--<br>-->
 <!--<br>-->
         <!--{{/each}}-->
+<script>
+    var categories = "books|electronics|fashion|sports";
+
+    categories = categories.split('|');
+
+    var option = '';
+    for (var f = 0; f < categories.length; f++) {
+        option += '<option value="' + categories[f] + '">' + categories[f] + '</option>';
+    }
+    $('#categories').append(option);
+</script>
