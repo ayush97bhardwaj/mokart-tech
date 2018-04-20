@@ -10,8 +10,8 @@
     </div>
     <!--<h4 id="cust">customer</h4>-->
     <!--<h4 id="seller">seller</h4>-->
-    <h2 style="color:blue;">{{user}}</h2>
-    <h1>{{err}}</h1>
+    <h2 style="color:blue;font-size:12px;">{{user}}</h2>
+    <h1 style="color:red;font-size:12px;">{{err}}</h1>
     <form action="/signin/customer" method="post" id="cform" autocomplete="off">
         <h3 class="center-align">Customer Login</h3>
         <div class="row">
@@ -37,7 +37,7 @@
 
         <div class="row">
             <div class="input-field col s6 offset-m3">
-                <input type="text" name="email">
+                <input type="text" name="email" value="{{email}}">
                 <label for="email">Email</label>
             </div>
         </div>
@@ -55,8 +55,10 @@
     </form>
 </div>
 <script>
-    $("#cform").hide();
+    $("#cform").show();
+    $("#cust").addClass("disabled");
     $("#sform").hide();
+    $("#seller").removeClass("disabled");
 
     $("#cust").click(() => {
         $("#cform").show();
@@ -70,4 +72,13 @@
         $("#seller").addClass("disabled");
         $("#cform").hide();
     });
+    console.log(window.location.href);
+    if(window.location.href === 'http://localhost:3000/signin/seller'){
+        if("{{trysignin}}"==='seller'){
+            $("#sform").show();
+            $("#cust").removeClass("disabled");
+            $("#seller").addClass("disabled");
+            $("#cform").hide();
+        }
+    }
 </script>

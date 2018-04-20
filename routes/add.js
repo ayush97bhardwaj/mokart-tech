@@ -3,8 +3,12 @@ var router=express.Router();
 var db=require('../db');
 
 router.get('/add',(req,res,next)=>{
-    if(req.session.user)
-    res.render('additem',{title: 'Add Item',loggedin:true,user:req.session.user});
+    if(req.session.user){
+        if(req.session.user.type=='seller')
+            res.render('additem',{title: 'Add Item',loggedin:true,user:req.session.user});
+        else res.redirect('/');
+    }
+    else res.redirect('/');
 });
 
 router.post('/additem',(req,res,next)=>{
