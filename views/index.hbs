@@ -1,5 +1,9 @@
 <h5>{{err}}</h5>
+{{#if items}}
 <h1>These are the list of items</h1>
+{{else}}
+<h2>no items added till date</h2>
+{{/if}}
 <div class="row">
     {{#each items}}
         <div class="col l3">

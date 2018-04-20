@@ -1,56 +1,59 @@
 <div class="container">
     <h2 class="center-align">New Customer SignUP</h2>
-
+    {{{err}}}
     <form action="/signup/customer" method="post" autocomplete="off">
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="cname" required/>
-                <label for="cname">Name</label>
+                <input type="text" name="cname" required value="{{result.cname}}"></input>
+                <label for="cname" class="cname">Name</label>
             </div>
             <div class="input-field col s6">
-                <input type="date" name="dob" required/>
-                <label for="dob">Date of Birth</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field col s6">
-                <input type="email" name="email" id="email" required/>
-                <label for="email">Email</label>
-            </div>
-            <div class="input-field col s6">
-                <input type="password" name="password" id="password" required/>
-                <label for="password">password</label>
+                <input type="date" name="dob" required value="{{result.dob}}"></input>
+                <label for="dob" class="dob">Date of Birth</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input type="text" name="phone[0]" id="phone0" required/>
-                <label>Phone Numbers</label>
+                <input type="email" name="email" id="email" value="{{result.email}}" required></input>
+                <label for="email" class="email">Email</label>
+                <div class="emailerr" style="color:#c62828; font-size:12px; position: relative;">invalid email</div>
+            </div>
+            <div class="input-field col s6">
+                <input type="password" name="password" id="password" value="{{result.password}}" required></input>
+                <label for="password" class="password">password</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" name="phone[0]" id="phone0" value="{{result.phone.[0]}}" required></input>
+                <label class="phone0">Phone Numbers</label>
                 <!--<p id="addphone">add another number</p>-->
+                <div class="phonerr1" style="color:#c62828; font-size:12px; position: relative;">invalid phone number</div>
             </div>
             <div class="input-field col s6">
-                <input type="text" name="phone[1]" id="phone1"/>
+                <input type="text" name="phone[1]" id="phone1" value="{{result.phone.[1]}}"></input>
                 <label>Alternate Phone Number</label>
+                <div class="phonerr2" style="color:#c62828; font-size:12px; position: relative;">invalid phone number</div>
             </div>
         </div>
 
         <h5 class="center-align">Address</h5>
         <div class="row">
             <div class="input-field col s3">
-                <input type="text" name='address[0][houseno]' required/>
+                <input type="text" name='address[0][houseno]' value="{{result.address.[0].[houseno]}}" required></input>
                 <label for="houseno">House no.</label>
             </div>
             <div class="input-field col s9">
-                <input type="text" name='address[0][streetno]' required/>
+                <input type="text" name='address[0][streetno]' value="{{result.address.[0].[streetno]}}" required></input>
                 <label for="streeno">Street Address</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s4">
-                <input type="text" name='address[0][city]' required/>
+                <input type="text" name='address[0][city]' value="{{result.address.[0].[city]}}" required></input>
                 <label for="city">City</label>
             </div>
             <!--<div class="input-field col s4">-->
@@ -58,12 +61,15 @@
             <!--<label for="state">State</label>-->
             <!--</div>-->
             <div class="input-field col s4">
-                <select id="states" name="address[0][states]" class="browser-default">
+                <select id="state" name="address[0][state]" class="browser-default">
                     <option disabled selected>Choose State</option>
+                    {{#if result.address.[0].[state]}}
+                    <option value="{{result.address.[0].[state]}}" selected>{{result.address.[0].[state]}}</option>
+                    {{/if}}
                 </select>
             </div>
             <div class="input-field col s4">
-                <input type="text" name='address[0][pincode]' required>
+                <input type="number" name='address[0][pincode]' min="100000" max="999999" value="{{result.address.[0].[pincode]}}" required></input>
                 <label for="pincode">Pincode</label>
             </div>
         </div>
@@ -78,29 +84,48 @@
 
 <script>
     let i = 0, j = 0;
-    $("#addphone").click(() => {
-        j++;
-        $('#addphone').before('<input type="text" name="phone[' + j + ']"/>');
-    });
-    $("#addr").click(() => {
-        i++;
-        $('#addr').before('<br><label for="houseno">House no.</label><input type="text" name="address[' + i + '][houseno]"/><label for="streetno">Street no.</label><input type="text" name="address[' + i + '][streetno]"/><label for="city">City</label><input type="text" name="address[' + i + '][city]"/><label for="state">State</label><input type="text" name="address[' + i + '][state]"/><label for="pincode">Pincode</label><input type="text" name="address[' + i + '][pincode]"/>');
-    });
+    $('.phonerr1').hide();
+    $('.phonerr2').hide();
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    //.....................................email......................................................
+    var email = $("#email").val();
+        console.log(email);
+        if (re.test(email)) {
+            //vaild
+            $("#submit").prop("disabled", false);
+            //$("#email").css("borderBottom","1px solid #689f38");
+            //$('label.email').css("color","#689f38");
+            $('.emailerr').css("display","none");
+        }
+        else {
+            console.log('not valid email');
+            $("#submit").attr("disabled", "disabled");
+            //$("#email").css("borderBottom","1px solid #c62828");
+            //$('label.email').css("color","#c62828");
+            $('.emailerr').css("display","block");
+        }
     $("#email").change(() => {
         var email = $("#email").val();
         console.log(email);
         if (re.test(email)) {
             //vaild
             $("#submit").prop("disabled", false);
+            //$("#email").css("borderBottom","1px solid #689f38");
+            //$('label.email').css("color","#689f38");
+            $('.emailerr').css("display","none");
         }
         else {
             console.log('not valid email');
             $("#submit").attr("disabled", "disabled");
+            //$("#email").css("borderBottom","1px solid #c62828");
+            //$('label.email').css("color","#c62828");
+            $('.emailerr').css("display","block");
         }
         var v1 = $("#phone0").val();
         if (v1 == '') {
             $("#submit").attr("disabled", "disabled");
+            //$('.phonerr1').css("display","block");
         }
     });
     var phonere = /^[789]\d{9}$/;
@@ -110,17 +135,23 @@
         if (phonere.test(phone)) {
             //vaild
             $("#submit").prop("disabled", false);
+            //$("#phone0").css("borderBottom","1px solid #689f38");
+            //$('label.phone0').css("color","#689f38");
+            $('.phonerr1').css("display","none");
         }
         else {
-            console.log('not valid email');
+            console.log('not valid phone');
             $("#submit").attr("disabled", "disabled");
-
+            //$("#phone0").css("borderBottom","1px solid #c62828");
+            //$('label.phone0').css("color","#c62828");
+            $('.phonerr1').css("display","block");
         }
     });
-    var v1 = $("#phone0").val();
-    if (v1 == '') {
-        $("#submit").attr("disabled", "disabled");
-    }
+    //var v1 = $("#phone0").val();
+    //if (v1 == '') {
+    //    $("#submit").attr("disabled", "disabled");
+    //    $('.phonerr1').show();
+    //}
 
     $('#phone1').change(function (req, res) {
         var phone = $("#phone1").val();
@@ -128,25 +159,42 @@
         if (phonere.test(phone)) {
             //vaild
             $("#submit").prop("disabled", false);
+            $('.phonerr2').css("display","none");
         }
         else {
             console.log('not valid email');
             $("#submit").attr("disabled", "disabled");
+            $('.phonerr2').css("display","block");
         }
         if (phone == '') {
-            $("#submit").prop("disabled", false);
+            var email = $("#email").val();
+            $('.phonerr2').css("display","none");
+            console.log(email);
+            if (re.test(email)) {
+                //vaild
+                $("#submit").prop("disabled", false);
+
+                if (phonere.test(phone)) {
+                    //vaild
+                    $("#submit").prop("disabled", false);
+                }
+            
+            }
+            else {
+                $("#submit").attr("disabled", "disabled");
+            }
         }
     });
     var states = "Andaman and Nicobar Islands|Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chandigarh|Chhattisgarh|Dadra and Nagar Haveli|Daman and Diu|Delhi|Goa|Gujarat|Haryana|Himachal Pradesh|Jammu and Kashmir|Jharkhand|Karnataka|Kerala|Lakshadweep|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Orissa|Pondicherry|Punjab|Rajasthan|Sikkim|Tamil Nadu|Tripura|Uttar Pradesh|Uttaranchal|West Bengal";
 
     states = states.split('|');
-    for (var k = 0; k < states.length; k++) {
-        console.log(states[k]);
-    }
+    //for (var k = 0; k < states.length; k++) {
+        //console.log(states[k]);
+    //}
 
     var option = '';
     for (var f = 0; f < states.length; f++) {
         option += '<option value="' + states[f] + '">' + states[f] + '</option>';
     }
-    $('#states').append(option);
+    $('#state').append(option);
 </script>
