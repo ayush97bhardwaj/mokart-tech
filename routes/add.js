@@ -31,8 +31,20 @@ router.post('/additem',(req,res,next)=>{
             else if(req.body.itemCategory == "sports"){
                 var addcategory = "INSERT INTO " + req.body.itemCategory + " values ('"+itemid+"','"+req.body.size+"') ";
             }
+            var d = new Date();
+            let month=d.getMonth()+1;
+            d=''+d.getFullYear()+'-'+month+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+            // month = '' + (d.getMonth() + 1),
+            // day = '' + d.getDate(),
+            // year = d.getFullYear();
+        
+            // if (month.length < 2) month = '0' + month;
+            // if (day.length < 2) day = '0' + day;
+        
+            // d= [year, month, day].join('-');
+            console.log(d);
 
-            var additem="INSERT INTO items (itemid,iname,price,description,shipcost,sellerid,iquantity) values ('"+itemid+"','"+req.body.iname+"','"+req.body.price+"','"+req.body.desc+"','"+req.body.shipcost+"','"+req.session.user.sellerid+"','"+req.body.qty+"')";
+            var additem="INSERT INTO items (itemid,iname,price,description,shipcost,sellerid,iquantity,dateofadd,type) values ('"+itemid+"','"+req.body.iname+"','"+req.body.price+"','"+req.body.desc+"','"+req.body.shipcost+"','"+req.session.user.sellerid+"','"+req.body.qty+"','"+d+"','"+req.body.itemCategory+"')";
 
             db.query(additem,(err,result)=>{
                 if(err) console.log(err);

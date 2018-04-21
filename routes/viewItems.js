@@ -4,18 +4,31 @@ var db = require('../db');
 
 router.get('/:id', (req, res, next) => {
 
-    var countquery = "select * from items as i where i.sellerid='" + req.session.user.sellerid + "'";
+    var item = "select * from items as i where i.itemid='" + req.params.id + "'";
+    db.query(item,function(err,result){
+        if(err) console.log(err);
+        else{
+            console.log(result);
+            if(req.session.user){
+                if(req.session.user.type==='customer'){
+                    var views='insert into views (custid,itemid) values ("'+req.session.user.custid+'","'+req.params.id+'")'
+                    db.query(views,(err,result)=>{
+                        if(err) console.log(err);
+                        else console.log(result);
+                    });
+                }
+                res.render('viewItems',{title:result[0].iname,result:result[0],loggedin:true,user:req.session.user});
+            }
+            else{
+                res.render('viewItems',{title:result.iname,result:result,loggedin:false});
+            }
+        }
+    })
+});
 
-    if (req.session.user && req.params.id === req.session.user.sellerid) {
-        var countquery = "select * from items as i where i.sellerid='" + req.session.user.sellerid + "'";
-        db.query(countquery, (err, result) => {
-            res.render('viewItems', {title: '', items: result, loggedin: true, user: req.session.user});
-        });
-    }
-    else if (req.session.user && req.params.id === req.session.user.custid) {
-        res.render('viewItems', {title: 'Dashboard', items: result, loggedin: true, user: req.session.user});
-    }
-
+router.post('/addtocart/:id',(req,res,next)=>{
+    
+    res.redirect('/cart');
 });
 
 module.exports = router;

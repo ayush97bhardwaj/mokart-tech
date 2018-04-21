@@ -15,23 +15,39 @@ router.get('/', function (req, res, next) {
       FROM information_schema.tables
       WHERE table_schema = 'dbms_proj' 
       AND table_name = 'items'`;
-  
   db.query(itemsexists,(err,result)=>{
     if(err) console.log(err);
     else{
-      // console.log(result[0]);
+      console.log('seller exists');
       if(result[0]['count(*)']!=0){
         console.log('items are present');
-        var countquery="select * from items";
-        db.query(countquery,(err,result)=>{
-          if(err) console.log(err);
-          else{
-            if(req.session.user)
-              res.render('index', { title: 'Home',items:result,loggedin:true,user:req.session.user});
-            else
-              res.render('index', { title: 'Home',items:result,loggedin:false});
+        if(req.session.user){
+          if(req.session.user.type=='seller')
+          {
+            var latest_items='select * from items where sellerid="'+req.session.user.sellerid+'" order by dateofadd desc limit 4';
+            db.query(latest_items,function(err,result){
+              if(err) console.log(err);
+              else{
+                console.log(result);
+                //................to be done after customer views added.........................................
+                // var latest_items='select itemid,count(*) from views v natural join items i where sellerid="'+req.session.user.sellerid+'" group by itemid';
+                
+                res.render('index', { title: 'Home',items:result,loggedin:true,user:req.session.user});
+              }
+            });
           }
-        });
+          else{
+            res.render('index', { title: 'Home',items:0,loggedin:true,user:req.session.user});
+          }
+        }
+        else{
+          res.render('index', { title: 'Home',items:0,loggedin:false});
+        }
+        // if(req.session.user)
+        //   res.render('index', { title: 'Home',items:result,loggedin:true,user:req.session.user});
+        // else
+        //   res.render('index', { title: 'Home',items:result,loggedin:false});
+      
       }
       else{
         res.render('index', { title: 'Home',items:0,loggedin:false});

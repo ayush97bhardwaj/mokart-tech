@@ -171,7 +171,12 @@ router.post('/customer', function(req, res, next) {
                 else console.log(result);
             });            
         });
-        
+        var cartid=req.body.email+'0';
+        var cart='insert into shoppingcart (cartid,custid) values ("'+cartid+'","'+req.body.email+'")';
+        db.query(cart,(err,result)=>{
+            if(err) console.log(err);
+            else console.log(result);
+        });
         console.log('no error');
         res.redirect('/signin');
         }
@@ -236,6 +241,8 @@ router.post('/seller',function(req,res,next){
             shipcost FLOAT NOT NULL,
             sellerid VARCHAR(40) NOT NULL,
             iquantity INT NOT NULL,
+            dateofadd DATETIME NOT NULL,
+            type VARCHAR(100) NOT NULL,
             PRIMARY KEY (itemid),
             FOREIGN KEY (sellerid) REFERENCES sellers(sellerid))`; 
     db.query(additem,(err,result)=>{
