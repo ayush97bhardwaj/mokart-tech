@@ -1,10 +1,35 @@
-
-<h1>hi</h1>
-<div>{{result.iname}}</div>
-<div>{{result.price}}</div>
-{{#ifCond user.type 'customer'}}
-<form action="/item/addtocart/{{result.itemid}}" method="post">
-    <input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}}">
-    <button>add to cart</button>
-</form>
-{{/ifCond}}
+<div class="container">
+    <div class="card-panel">
+        <h1 align="center">{{result.iname}}</h1>
+        <!--<div>{{result.iname}}</div>-->
+        <span><label>Sale Price:</label></span>{{result.price}}
+        <!--<div>{{result.price}}</div>-->
+        <p>{{result.description}}</p>
+        {{#ifCond user.type 'customer'}}
+            <form action="/item/addtocart/{{result.itemid}}" method="post">
+                <div class="row">
+                    <p><input type="number"
+                              name="qty"
+                              id="qty"
+                              min="0"
+                              max="{{result.iquantity}}">
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center-align">
+                        <button class="btn-small">add to cart</button>
+                    </div>
+                </div>
+            </form>
+        {{/ifCond}}
+    </div>
+</div>
+<!--<h1>hi</h1>-->
+<!--<div>{{result.iname}}</div>-->
+<!--<div>{{result.price}}</div>-->
+        <!--{{#ifCond user.type 'customer'}}-->
+<!--<form action="/item/addtocart/{{result.itemid}}" method="post">-->
+<!--<input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}}">-->
+<!--<button>add to cart</button>-->
+<!--</form>-->
+        <!--{{/ifCond}}-->
