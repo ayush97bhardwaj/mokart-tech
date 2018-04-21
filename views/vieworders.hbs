@@ -1,0 +1,10 @@
+<h5 style="color:purple">these are your orders</h5>
+{{#each order}}
+<div style="paddding:20px;border:1px solid #090a3d">
+    <div>itemname: {{this.iname}}</div>
+    <div>status: {{this.orderstatus}}</div>
+    <div>dateoforder: {{this.orderdate}}</div>
+    <div>cartid/orderid: {{this.cartid}}</div>
+    <div>mode of payment: {{this.paymode}}</div>
+</div>
+{{/each}}

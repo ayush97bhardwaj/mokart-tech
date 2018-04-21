@@ -3,9 +3,14 @@
 {{{err}}}
 <div>{{result.iname}}</div>
 <div>{{result.price}}</div>
+<div>{{result.iquantity}}</div>
 {{#ifCond user.type 'customer'}}
+{{#if result.iquantity}}
 <form action="/items/addtocart/{{result.itemid}}" method="post">
     <input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}}">
     <button>add to cart</button>
 </form>
+{{else}}
+<h5 style="color:blue;">item not available</h5>
+{{/if}}
 {{/ifCond}}
