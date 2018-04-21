@@ -17,45 +17,218 @@
     </div>
 </form>
 
-{{#if items}}
+{{!-- {{#if items}}
 <h1>These are the list of items</h1>
-{{else}}
-<h2>no items added till date</h2>
-{{/if}}
+{{/if}} --}}
 <div class="row">
-    {{#each items}}
-        <div class="col l3">
-            <div class="card">
-                <div class="card-image">
-                    <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
-                    {{#ifCond ../user.type 'customer'}}
-                        <a class="btn-floating halfway-fab red"><i
-                                class="material-icons">add</i></a>
-                    {{/ifCond}}
-                </div>
-                <div class="card-content">
-                    <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
-                    <label>Description: </label><br>
-                    <p style="padding-top: 5px">{{this.description}}</p>
-                    <p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"
-                                                                                    style="padding-top: 5px">{{this.shipcost}}
-                        ₹</span></p>
+{{#if user}}
+    {{#ifCond user.type 'customer'}}
+        
+        {{#if viewed}}
+        <div class="row">
+        <h3>some of your viewed items</h3>
+        {{#each viewed}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
+                    </div>
                 </div>
             </div>
+        {{/each}}
         </div>
-    {{/each}}
+    	{{/if}}
+
+        <br>
+        {{#if pending}}
+        <div class="row">
+        <h3>your pending orders</h3>
+        {{#each pending}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">ordered qty:{{this.addedqty}}</span></p>
+                        <p>date of order: {{this.orderdate}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        {{/if}}
+
+        <br>
+        <h3>Most viewed all over the world</h3>
+        
+        <div class="row">
+        <h4>Books</h4>
+        {{#each books}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <br>
+
+        <div class="row">
+        <h4>Electronics</h4>
+        {{#each electronics}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <div class="row">
+        <h4>fasion</h4>
+        {{#each fashion}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <br>
+
+        <div class="row">
+        <h4>sports</h4>
+        {{#each sports}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">ordered qty:{{this.price}}₹</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    {{else}}
+
+        {{!-- ............................seller logged in................................................ --}}
+
+        {{#each items}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">{{this.price}}₹</span></p>
+                        <label>Description: </label><br>
+                        <p style="padding-top: 5px">{{this.description}}</p>
+                        <p style="padding-top: 5px"><label>Shipping Cost: </label><span class="right"
+                                                                                        style="padding-top: 5px">{{this.shipcost}}
+                            ₹</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    {{/ifCond}}
+{{else}}
+
+    {{!-- ..................not logged in.......................................................... --}}
+
+    <div class="row">
+        <h4>Books</h4>
+        {{#each books}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <br>
+
+        <div class="row">
+        <h4>Electronics</h4>
+        {{#each electronics}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <div class="row">
+        <h4>fasion</h4>
+        {{#each fashion}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+        <br>
+
+        <div class="row">
+        <h4>sports</h4>
+        {{#each sports}}
+            <div class="col l3">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+{{/if}}
 </div>
-        <!--{{#each items}}-->
-<!--<h6>name : {{this.iname}}</h6>-->
-<!--<h6>itemid : {{this.itemid}}</h6>-->
-<!--<h6>price : {{this.price}}</h6>-->
-<!--<h6>description : {{this.description}}</h6>-->
-<!--<h6>shipping cost : {{this.shipcost}}</h6>-->
-<!--<h6>seller email id :{{this.sellerid}}</h6>-->
-<!--<h6>quantity : {{this.iquantity}}</h6>-->
-<!--<br>-->
-<!--<br>-->
-        <!--{{/each}}-->
+
 <script>
     var categories = "books|electronics|fashion|sports";
 
