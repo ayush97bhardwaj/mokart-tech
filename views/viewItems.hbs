@@ -1,9 +1,10 @@
 
 <h1>hi</h1>
+{{{err}}}
 <div>{{result.iname}}</div>
 <div>{{result.price}}</div>
 {{#ifCond user.type 'customer'}}
-<form action="/item/addtocart/{{result.itemid}}" method="post">
+<form action="/items/addtocart/{{result.itemid}}" method="post">
     <input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}}">
     <button>add to cart</button>
 </form>

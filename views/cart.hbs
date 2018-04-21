@@ -1,1 +1,8 @@
 <h1>this is cart</h1>
+{{#each items}}
+<div>{{this.itemid}}</div>
+<div>{{this.iname}}</div>
+{{/each}}
+<form action="/cart/order" method="post">
+<button>place order</button>
+</form>
