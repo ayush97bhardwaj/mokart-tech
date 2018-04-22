@@ -80,6 +80,14 @@ router.post('/order',(req,res,next)=>{
                 if(err) console.log(err);
                 else{
                     console.log(result2[0]);
+                    var statusitem='update addedto set itemstatus="pending" where cartid="'+result2[0].cartid+'"';
+                    db.query(statusitem,(err,result3)=>{
+                        if(err) console.log(err);
+                        else{
+                            console.log(result3);
+                        }
+                    });
+
                     var items='select * from addedto where cartid="'+result2[0].cartid+'"';
                     db.query(items,(err,result3)=>{
                         result3.forEach(item=>{

@@ -13,7 +13,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var signup = require('./routes/signup');
 var signin=require('./routes/signin');
-var additem=require('./routes/add');
+var additem=require('./routes/seller');
 var dashboard = require('./routes/dashboard');
 var viewItems = require('./routes/viewItems');
 var cart = require('./routes/cart');
@@ -71,7 +71,7 @@ app.use('/signin',isloggedin,signin);
 app.use('/seller',additem);
 app.use('/dashboard',dashboard);
 app.use('/items',viewItems);
-app.use('/cart',cart)
+app.use('/cart',cart);
 // app.use('/dashboard',customerDashboard);
 app.get('/logout',(req,res,next)=>{
   req.session.destroy(function(err){
