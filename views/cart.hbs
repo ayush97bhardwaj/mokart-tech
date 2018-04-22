@@ -1,1 +1,17 @@
 <h1>this is cart</h1>
+{{#each items}}
+<div>{{this.itemid}}</div>
+<div>{{this.iname}}</div>
+{{/each}}
+{{#if items}}
+<form action="/cart/order" method="post">
+<select name="modeofpay" id="mode" style="display:block;">
+    <option value="cod">cash on delivery</option>
+    <option value="debit">debit card</option>
+    <option value="netbanking">netbanking</option>
+</select>
+<button>place order</button>
+</form>
+{{else}}
+<h5>cart is empty</h5>
+{{/if}}

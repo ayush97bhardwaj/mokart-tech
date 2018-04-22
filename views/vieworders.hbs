@@ -1,0 +1,21 @@
+<h4 align="center" style="color:purple">These are your orders</h4>
+<div class="row">
+    {{#each order}}
+        <div class="col l6 offset-l3 ">
+            <div class="card-panel grey lighten-5">
+                <div><h5>{{this.iname}}<span class="right"><label>status: </label>{{this.orderstatus}}</span></h5>
+                </div>
+                <!--<div><label>status: </label>{{this.orderstatus}}</div>-->
+                <div><label>dateoforder: </label>{{this.orderdate}}</div>
+                <div><label>cartid/orderid: </label>{{this.cartid}}<span
+                        class="right"><label>mode of payment: </label>{{this.paymode}}</span></div>
+                <!--<div><label>mode of payment: </label>{{this.paymode}}</div>-->
+                <!--<div class="card sticky-action grey lighten-5">-->
+                    <div class="card-action center">
+                        <button class="btn-small red darken-1">Remove Item</button>
+                    </div>
+                <!--</div>-->
+            </div>
+        </div>
+    {{/each}}
+</div>

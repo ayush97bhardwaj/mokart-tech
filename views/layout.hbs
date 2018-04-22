@@ -17,6 +17,10 @@
     <li><a href="/signup/customer">Customer</a></li>
     <li><a href="/signup/seller">Seller</a></li>
 </ul>
+<ul id="custprofile" class="dropdown-content">
+    <li><a href="/cart/orders">orders</a></li>
+    <li><a href="/profile">profile</a></li>
+</ul>
 {{#if loggedin}}
     <nav>
         <div class="nav-wrapper red darken-1">
@@ -31,13 +35,14 @@
                     <li><a class="tooltipped" href="/seller/add" data-position="bottom" data-tooltip="Add Item"><i class="material-icons">add_circle_outline</i></a></li>
                     <li><a href="/logout">Logout</a></li>
                 {{else}}
-                    <li><a class="tooltipped" href="/dashboard/{{user.custid}}" data-position="bottom" data-tooltip="Customer">{{user.cname}}
+                    <li><a class="dropdown-trigger-2 tooltipped" href="#!" data-target="custprofile"  data-position="bottom" data-tooltip="Customer">{{user.cname}}
+                        <i class="material-icons right">arrow_drop_down</i>
                     </a></li>
 
                     <ul id="customer" class="dropdown-content">
                         <li><a href="#!">Customer</a></li>
                     </ul>
-                    <li><a href="#" class="tooltipped" data-position="bottom" data-tooltip="View Cart"><i class="material-icons">add_shopping_cart</i></a></li>
+                    <li><a href="/cart" class="tooltipped" data-position="bottom" data-tooltip="View Cart"><i class="material-icons">add_shopping_cart</i></a></li>
                     <li><a href="/logout">Logout</a></li>
                 {{/ifCond}}
             </ul>
@@ -63,6 +68,7 @@
     $(document).ready(function () {
         console.log("ready!");
         $(".dropdown-trigger").dropdown({hover: true});
+        $(".dropdown-trigger-2").dropdown({hover: false});
         $('.tooltipped').tooltip();
     });
 </script>
