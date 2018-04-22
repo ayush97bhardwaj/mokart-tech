@@ -240,6 +240,7 @@ function connectDatabase() {
                                         itemid VARCHAR(40) NOT NULL,
                                         addedqty INT NOT NULL,
                                         cartid VARCHAR(40) NOT NULL,
+                                        itemstatus VARCHAR(100),
                                         PRIMARY KEY(itemid,cartid),
                                         FOREIGN KEY(itemid) REFERENCES items(itemid),
                                         FOREIGN KEY(cartid) REFERENCES shoppingcart(cartid)
