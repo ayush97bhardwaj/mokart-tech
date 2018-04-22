@@ -1,0 +1,10 @@
+<h4>these are the received orders</h4>
+{{#each items}}
+<div style="border:1px solid rgb(13, 13, 104);padding:20px;">
+    <div>item name : {{iname}}</div>
+    <div>ordered quantity : {{addedqty}}</div>
+    <div>order by : {{custid}}</div>
+    <div>order status : {{itemstatus}}</div>
+    <div style="font-weight:bold"><a href="/seller/order/{{itemid}}/{{cartid}}">set order ready</a></div>
+</div>
+{{/each}}

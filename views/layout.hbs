@@ -21,13 +21,18 @@
     <li><a href="/cart/orders">orders</a></li>
     <li><a href="/profile">profile</a></li>
 </ul>
+<ul id="orders" class="dropdown-content">
+    <li><a href="/seller/orders">pending orders</a></li>
+    <li><a href="/seller/allorders">Order history</a></li>
+</ul>
 {{#if loggedin}}
     <nav>
         <div class="nav-wrapper red darken-1">
             <a href="/" class="brand-logo center">Mokart Tech</a>
             <ul class="right hide-on-med-and-down">
                 {{#ifCond user.type 'seller'}}
-                    <li><a class="tooltipped" href="/dashboard/{{user.sellerid}}" data-position="bottom" data-tooltip="Seller">{{user.sname}}
+                    <li><a class="dropdown-trigger-2 tooltipped" href="#!" data-target="orders" data-position="bottom" data-tooltip="Seller">{{user.sname}}
+                        <i class="material-icons right">arrow_drop_down</i>
                     </a></li>
                     <ul id="customer" class="dropdown-content">
                         <li><a href="#!">Seller</a></li>
