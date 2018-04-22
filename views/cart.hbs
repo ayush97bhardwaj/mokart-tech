@@ -1,41 +1,52 @@
-<h1>this is cart</h1>
-{{#each items}}
-<div>name: {{this.iname}}</div>
-<div>qty added: {{addedqty}}</div>
-<div> price per item: {{price}}</div>
-<div style="font-weight:bold" id="{{itemid}}">total for this item: </div>
-<a href="/cart/remove/{{itemid}}/{{cartid}}">remove this item</a>
-<br>
-{{/each}}
-
-<br>
-<div style="font-size:24px;font-weight:bold" id="total"></div>
-
-<br>
-<br>
-<br>
-
-{{#if items}}
-<form action="/cart/order" method="post">
-<select name="modeofpay" id="mode" style="display:block;">
-    <option value="cod">cash on delivery</option>
-    <option value="debit">debit card</option>
-    <option value="netbanking">netbanking</option>
-</select>
-<button>place order</button>
-</form>
-{{else}}
-<h5>cart is empty</h5>
-{{/if}}
-
-<script>
-    var all=0;
+<h1 align="center">Cart</h1>
+<div class="row">
     {{#each items}}
-    var total={{price}}*{{addedqty}};
-        all+=total;
-        $('div[id="{{this.itemid}}"]').text('total for this item : '+total);
+        <div class="col l6 offset-l3 ">
+            <div class="card-panel grey lighten-5">
+                <div>name: {{this.iname}}</div>
+                <div>qty added: {{addedqty}}</div>
+                <div> price per item: {{price}}</div>
+                <div style="font-weight:bold" id="{{itemid}}">total for this item:</div>
+                <a href="/cart/remove/{{itemid}}/{{cartid}}">remove this item</a>
+            </div>
+        </div>
     {{/each}}
-    {{#if items}}
-    $('#total').text("total : "+ all);
-    {{/if}}
+</div>
+<div style="font-size:24px;font-weight:bold;" align="center" id="total"></div>
+
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="input-field col s6 offset-l3">
+        {{#if items}}
+            <form action="/cart/order" method="post">
+                <select name="modeofpay" id="mode" style="display:block;">
+                    <option value="cod">cash on delivery</option>
+                    <option value="debit">debit card</option>
+                    <option value="netbanking">netbanking</option>
+                </select>
+                <div class="row">
+                    <div class="input-field col s12 center-align">
+                        <button class="btn-small">place order</button>
+                    </div>
+                </div>
+
+            </form>
+        {{else}}
+            <h5>cart is empty</h5>
+        {{/if}}
+    </div>
+</div>
+<script>
+    var all = 0;
+        {{#each items}}
+        var total ={{price}}*
+            {{addedqty}};
+        all += total;
+        $('div[id="{{this.itemid}}"]').text('total for this item : ' + total);
+        {{/each}}
+        {{#if items}}
+        $('#total').text("total : " + all);
+        {{/if}}
 </script>

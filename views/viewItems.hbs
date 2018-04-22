@@ -34,18 +34,26 @@
 <!--</form>-->
         <!--{{/ifCond}}-->
 
-<h1>hi</h1>
+<h1 align="center">Item Details</h1>
 {{{err}}}
-<div>{{result.iname}}</div>
-<div>{{result.price}}</div>
-<div>{{result.iquantity}}</div>
-{{#ifCond user.type 'customer'}}
-{{#if result.iquantity}}
-<form action="/items/addtocart/{{result.itemid}}" method="post">
-    <input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}}">
-    <button>add to cart</button>
-</form>
-{{else}}
-<h5 style="color:blue;">item not available</h5>
-{{/if}}
-{{/ifCond}}
+<div class="row">
+    <div class="col l6 offset-l3 ">
+        <div class="card-panel grey lighten-5">
+            <div>{{result.iname}}</div>
+            <div>{{result.price}}</div>
+            <div>{{result.iquantity}}</div>
+            {{#ifCond user.type 'customer'}}
+                {{#if result.iquantity}}
+                    <form action="/items/addtocart/{{result.itemid}}" method="post">
+                        <input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}} required">
+                        <div class="input-field center-align">
+                            <button class="btn-small">Add To Cart</button>
+                        </div>
+                    </form>
+                {{else}}
+                    <h5 style="color:blue;">item not available</h5>
+                {{/if}}
+            {{/ifCond}}
+        </div>
+    </div>
+</div>

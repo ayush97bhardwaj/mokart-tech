@@ -15,7 +15,7 @@ router.get('/:id', (req, res, next) => {
                     var views='insert into views (custid,itemid) values ("'+req.session.user.custid+'","'+req.params.id+'")'
                     db.query(views,(err,result)=>{
                         if(err) console.log(err);
-                        else console.log(result); 
+                        else console.log(result);
                     });
                 }
 
