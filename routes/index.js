@@ -37,11 +37,95 @@ router.get('/', function (req, res, next) {
             });
           }
           else{
-            res.render('index', { title: 'Home',items:0,loggedin:true,user:req.session.user});
+            var view,pend,sport,book,electronic,fash;
+            var viewed='select * from items i natural join views v where v.custid="'+req.session.user.custid+'" limit 4';
+            db.query(viewed,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                view=result1;
+              }
+            });
+            var sports='select *,count(*) from items i natural join views v where i.type="sports" group by itemid order by count(*) desc limit 4';
+            db.query(sports,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                sport=result1;
+              }
+            });
+            var books='select *,count(*) from items i natural join views v where i.type="books" group by itemid order by count(*) desc limit 4';
+            db.query(books,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                book=result1;
+              }
+            });
+            var electronics='select *,count(*) from items i natural join views v where i.type="electronics" group by itemid order by count(*) desc limit 4';
+            db.query(electronics,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                electronic=result1;
+              }
+            });
+            var fashion='select *,count(*) from items i natural join views v where i.type="fashion" group by itemid order by count(*) desc limit 4';
+            db.query(fashion,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                fash=result1;
+              }
+            });
+            var pending='select * from (items i natural join addedto a) natural join shoppingcart s where s.orderstatus="pending" and s.custid="'+req.session.user.custid+'"';
+            db.query(pending,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                pend=result1;
+              }
+            });
+            setTimeout(()=> { res.render('index', { title: 'Home',sports:sport,books:book,electronics:electronic,fashion:fash,viewed:view,pending:pend,loggedin:true,user:req.session.user}) },1000);
           }
         }
         else{
-          res.render('index', { title: 'Home',items:0,loggedin:false});
+
+          var sport,book,electronic,fash;
+          var sports='select *,count(*) from items i natural join views v where i.type="sports" group by itemid order by count(*) desc limit 4';
+            db.query(sports,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                sport=result1;
+              }
+            });
+            var books='select *,count(*) from items i natural join views v where i.type="books" group by itemid order by count(*) desc limit 4';
+            db.query(books,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                book=result1;
+              }
+            });
+            var electronics='select *,count(*) from items i natural join views v where i.type="electronics" group by itemid order by count(*) desc limit 4';
+            db.query(electronics,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                electronic=result1;
+              }
+            });
+            var fashion='select *,count(*) from items i natural join views v where i.type="fashion" group by itemid order by count(*) desc limit 4';
+            db.query(fashion,(err,result1)=>{
+              if(err) console.log(err);
+              else{
+                console.log(result1);
+                fash=result1;
+              }
+            });
+            setTimeout(()=> { res.render('index', { title: 'Home',sports:sport,books:book,electronics:electronic,fashion:fash,loggedin:false}) },1000);
+          // res.render('index', { title: 'Home',items:0,loggedin:false});
         }
         // if(req.session.user)
         //   res.render('index', { title: 'Home',items:result,loggedin:true,user:req.session.user});
