@@ -22,7 +22,7 @@ router.get('/:id', (req, res, next) => {
                 res.render('viewItems',{title:'result[0].iname',result:result[0],loggedin:true,user:req.session.user});
             }
             else{
-                res.render('viewItems',{title:'result.iname',result:result,loggedin:false});
+                res.render('viewItems',{title:'result.iname',result:result[0],loggedin:false});
             }
         }
     })

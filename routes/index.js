@@ -46,7 +46,7 @@ router.get('/', function (req, res, next) {
                 view=result1;
               }
             });
-            var sports='select *,count(*) from items i natural join views v where i.type="sports" group by itemid order by count(*) desc limit 4';
+            var sports='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="sports" group by i.itemid order by count(*) desc limit 4';
             db.query(sports,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -54,7 +54,7 @@ router.get('/', function (req, res, next) {
                 sport=result1;
               }
             });
-            var books='select *,count(*) from items i natural join views v where i.type="books" group by itemid order by count(*) desc limit 4';
+            var books='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="books" group by i.itemid order by count(*) desc limit 4';
             db.query(books,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -62,7 +62,7 @@ router.get('/', function (req, res, next) {
                 book=result1;
               }
             });
-            var electronics='select *,count(*) from items i natural join views v where i.type="electronics" group by itemid order by count(*) desc limit 4';
+            var electronics='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="electronics" group by i.itemid order by count(*) desc limit 4';
             db.query(electronics,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -70,7 +70,7 @@ router.get('/', function (req, res, next) {
                 electronic=result1;
               }
             });
-            var fashion='select *,count(*) from items i natural join views v where i.type="fashion" group by itemid order by count(*) desc limit 4';
+            var fashion='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="fashion" group by i.itemid order by count(*) desc limit 4';
             db.query(fashion,(err,result1)=>{
               if(err) console.log(err);
               else{
