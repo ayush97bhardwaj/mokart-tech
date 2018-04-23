@@ -6,6 +6,7 @@
                 <div>name: {{this.iname}}</div>
                 <div>qty added: {{addedqty}}</div>
                 <div> price per item: {{price}}</div>
+                <div>shipping cost: {{shipcost}}</div>
                 <div style="font-weight:bold" id="{{itemid}}">total for this item:</div>
                 <a href="/cart/remove/{{itemid}}/{{cartid}}">remove this item</a>
             </div>
@@ -13,6 +14,8 @@
     {{/each}}
 </div>
 <div style="font-size:24px;font-weight:bold;" align="center" id="total"></div>
+<div style="font-size:20px;font-weight:bold;color:rgb(6, 114, 6)" align="center" id="shipcost"></div>
+<div style="font-size:24px;font-weight:bold;" align="center" id="freeship"></div>
 
 <br>
 <br>
@@ -47,6 +50,20 @@
         $('div[id="{{this.itemid}}"]').text('total for this item : ' + total);
         {{/each}}
         {{#if items}}
-        $('#total').text("total : " + all);
+        //$('#total').text("total : " + all);
+            if(all>5000)
+            {
+                $('#total').text("total : " + all +'  (includes shipping cost if any)');
+                $('#freeship').text("your items will be shipped free of cost if you order now");
+            }
+            else{
+                var shipcost=0;
+                {{#each items}}
+                    shipcost+={{shipcost}}
+                {{/each}}
+                all+=shipcost;
+                $('#total').text("total : " + all +'  (includes shipping cost if any)');
+                $('#shipcost').text("shipping cost : " + shipcost);
+            }
         {{/if}}
 </script>

@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
         if(req.session.user){
           if(req.session.user.type=='seller')
           {
-            var latest_items='select * from items where sellerid="'+req.session.user.sellerid+'" order by dateofadd desc limit 4';
+            var latest_items='select * from items where sellerid="'+req.session.user.sellerid+'" order by dateofadd desc limit 100';
             db.query(latest_items,function(err,result){
               if(err) console.log(err);
               else{
@@ -92,7 +92,7 @@ router.get('/', function (req, res, next) {
         else{
 
           var sport,book,electronic,fash;
-          var sports='select *,count(*) from items i natural join views v where i.type="sports" group by itemid order by count(*) desc limit 8';
+          var sports='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="sports" group by i.itemid order by count(*) desc limit 8';
             db.query(sports,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -100,7 +100,7 @@ router.get('/', function (req, res, next) {
                 sport=result1;
               }
             });
-            var books='select *,count(*) from items i natural join views v where i.type="books" group by itemid order by count(*) desc limit 8';
+            var books='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="books" group by i.itemid order by count(*) desc limit 8';
             db.query(books,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -108,7 +108,7 @@ router.get('/', function (req, res, next) {
                 book=result1;
               }
             });
-            var electronics='select *,count(*) from items i natural join views v where i.type="electronics" group by itemid order by count(*) desc limit 8';
+            var electronics='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="electronics" group by i.itemid order by count(*) desc limit 8';
             db.query(electronics,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -116,7 +116,7 @@ router.get('/', function (req, res, next) {
                 electronic=result1;
               }
             });
-            var fashion='select *,count(*) from items i natural join views v where i.type="fashion" group by itemid order by count(*) desc limit 8';
+            var fashion='select *,count(*) from views v right join items i on i.itemid=v.itemid where i.type="fashion" group by i.itemid order by count(*) desc limit 8';
             db.query(fashion,(err,result1)=>{
               if(err) console.log(err);
               else{
