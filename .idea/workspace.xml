@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e385ef1-f098-4afc-8be5-7fc9b3686910" name="Default" comment="A lot of changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/viewItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/viewItems.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/cart.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/cart.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/viewItems.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/viewItems.hbs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,7 +33,7 @@
           <file leaf-file-name="viewItems.hbs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/viewItems.hbs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="592">
+                <state relative-caret-position="1029">
                   <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
                   <folding>
                     <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
@@ -48,8 +45,8 @@
           <file leaf-file-name="layout.hbs" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/layout.hbs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="525">
-                  <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+                <state relative-caret-position="609">
+                  <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
                 </state>
               </provider>
             </entry>
@@ -118,7 +115,7 @@
           <file leaf-file-name="cart.hbs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/cart.hbs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="718">
+                <state relative-caret-position="393">
                   <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
                   <folding>
                     <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -310,7 +307,7 @@
       <workItem from="1524304994972" duration="145000" />
       <workItem from="1524305151160" duration="1650000" />
       <workItem from="1524338852419" duration="3901000" />
-      <workItem from="1524404309226" duration="1401000" />
+      <workItem from="1524404309226" duration="1800000" />
     </task>
     <task id="LOCAL-00001" summary="Add Items Page and new UI">
       <created>1523201323628</created>
@@ -358,7 +355,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57714000" />
+    <option name="totallyTimeSpent" value="58113000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -371,9 +368,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48425788" visible="true" weight="0.1151296" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48425788" visible="true" weight="0.17299578" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32977778" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -381,7 +377,7 @@
       <window_info anchor="bottom" id="Run" order="3" weight="0.31589743" />
       <window_info id="npm" order="2" sideWeight="0.5157421" side_tool="true" weight="0.1151296" />
       <window_info id="Structure" order="1" sideWeight="0.5106101" side_tool="true" weight="0.11532386" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.33333334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33333334" />
       <window_info id="Favorites" order="3" sideWeight="0.5106101" side_tool="true" weight="0.11532386" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -706,8 +702,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+        <state relative-caret-position="609">
+          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -758,7 +754,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/cart.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
+        <state relative-caret-position="393">
           <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
           <folding>
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -769,7 +765,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/viewItems.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
+        <state relative-caret-position="1029">
           <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
           <folding>
             <element signature="n#style#0;n#h5#0;n#!!top" expanded="true" />
