@@ -3,16 +3,20 @@
 <div class="row">
     <div class="col l6 offset-l3 ">
         <div class="card-panel grey lighten-5">
-            <div><label>Item Name: </label>{{result.iname}}</div>
-            <div><label>Sale Price: </label>{{result.price}}</div>
-            <div><label>Shipping Cost: </label>{{result.shipcost}}</div>
-            <div><label>Quantity Available: </label>{{result.iquantity}}</div>
-            <div><label>{{result.description}}</div>
+            <div class="section"><label>Item Name: </label>{{result.iname}}</div>
+            <div class="section"><label>Sale Price: </label>{{result.price}}</div>
+            <div class="section"><label>Shipping Cost: </label>{{result.shipcost}}</div>
+            <div class="section"><label>Quantity Available: </label>{{result.iquantity}}</div>
+            <div class="section"><label>Description: </label>{{result.description}}</div>
             {{#ifCond user.type 'customer'}}
                 {{#if result.iquantity}}
                     <form action="/items/addtocart/{{result.itemid}}" method="post">
+                        <div class="divider"></div>
+                        <div class="section">
+                            <label>Choose Item Quantity:</label>
+                        </div>
                         <input type="number" name="qty" id="qty" min="0" max="{{result.iquantity}} required">
-                        <div class="input-field center-align">
+                        <div class="input-field center-align section">
                             <button class="btn-small">Add To Cart</button>
                         </div>
                     </form>

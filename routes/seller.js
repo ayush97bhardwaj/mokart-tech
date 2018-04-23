@@ -124,7 +124,6 @@ router.get('/order/:itemid/:cartid',(req,res,next)=>{
                                     if(err) console.log(err);
                                     else{
                                         console.log(result4);
-                                        res.redirect('/seller/orders');
                                     }
                                 });
                             }
@@ -134,5 +133,6 @@ router.get('/order/:itemid/:cartid',(req,res,next)=>{
             });
         }
     });
+    res.redirect('/seller/orders');
 });
 module.exports=router;

@@ -1,25 +1,28 @@
 <h5>{{err}}</h5>
-<h1 align="center">These are the list of items</h1>
-<form action="/viewItems/" method="post" autocomplete="off">
+<!--<h1 align="center">These are the list of items</h1>-->
+<!--<form action="/viewItems/" method="post" autocomplete="off">-->
 
-    <div class="row">
-        <div class="input-field col s6 offset-m3">
-            <select id="categories" name="itemCategory" class="browser-default" required>
-                <option disabled selected>Choose Category</option>
-            </select>
-        </div>
+<!--<div class="row">-->
+<!--<div class="input-field col s6 offset-m3">-->
+<!--<select id="categories" name="itemCategory" class="browser-default" required>-->
+<!--<option disabled selected>Choose Category</option>-->
+<!--</select>-->
+<!--</div>-->
 
-    </div>
-    <div class="row">
-        <div class="input-field col s12 center-align">
-            <button type="submit" class="btn-large" id="submit">Submit</button>
-        </div>
-    </div>
-</form>
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="input-field col s12 center-align">-->
+<!--<button type="submit" class="btn-large" id="submit">Submit</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</form>-->
 
 {{!-- {{#if items}}
 <h1>These are the list of items</h1>
 {{/if}} --}}
+<div class="container">
+    <div class="section"><h3 align="center" style="color: red;">OFFER!!! : Free Shipping above orders ₹ 5000</h3></div>
+</div>
 <div class="row">
     {{#if user}}
         {{#ifCond user.type 'customer'}}
@@ -139,7 +142,9 @@
         {{else}}
 
         {{!-- ............................seller logged in................................................ --}}
-
+            <h3 align="center">Items Added By You</h3>
+            <br>
+            <hr>
             {{#each items}}
                 <div class="col l3">
                     <div class="card">

@@ -3,19 +3,21 @@
     {{#each items}}
         <div class="col l6 offset-l3 ">
             <div class="card-panel grey lighten-5">
-                <div>name: {{this.iname}}</div>
-                <div>qty added: {{addedqty}}</div>
-                <div> price per item: {{price}}</div>
-                <div>shipping cost: {{shipcost}}</div>
-                <div style="font-weight:bold" id="{{itemid}}">total for this item:</div>
-                <a href="/cart/remove/{{itemid}}/{{cartid}}">remove this item</a>
-            </div>
+                <div class="section">Name: {{this.iname}}</div>
+                <div class="section">Quantity Added: {{addedqty}}</div>
+                <div class="section">Price Per Item: ₹ {{price}}</div>
+                <div class="section">Shipping Cost: ₹ {{shipcost}}</div>
+                <div class="section" style="font-weight:bold" id="{{itemid}}">Total For This Order:</div>
+                <div class="section center">
+                <a href="/cart/remove/{{itemid}}/{{cartid}}">Remove This Item</a>
+                </div>
+                </div>
         </div>
     {{/each}}
 </div>
-<div style="font-size:24px;font-weight:bold;" align="center" id="total"></div>
-<div style="font-size:20px;font-weight:bold;color:rgb(6, 114, 6)" align="center" id="shipcost"></div>
-<div style="font-size:24px;font-weight:bold;" align="center" id="freeship"></div>
+<div class="section" style="font-size:24px;font-weight:bold;" align="center" id="total"></div>
+<div class="section" style="font-size:20px;font-weight:bold;color:rgb(6, 114, 6)" align="center" id="shipcost"></div>
+<div class="section" style="font-size:24px;font-weight:bold;" align="center" id="freeship"></div>
 
 <br>
 <br>
@@ -25,19 +27,19 @@
         {{#if items}}
             <form action="/cart/order" method="post">
                 <select name="modeofpay" id="mode" style="display:block;">
-                    <option value="cod">cash on delivery</option>
-                    <option value="debit">debit card</option>
-                    <option value="netbanking">netbanking</option>
+                    <option value="cod">Cash On Delivery</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="netbanking">NetBanking</option>
                 </select>
                 <div class="row">
-                    <div class="input-field col s12 center-align">
-                        <button class="btn-small">place order</button>
+                    <div class="input-field col s12 center-align section">
+                        <button class="btn-small">Place Order</button>
                     </div>
                 </div>
 
             </form>
         {{else}}
-            <h5>cart is empty</h5>
+            <h5 align="center">Cart Is Empty</h5>
         {{/if}}
     </div>
 </div>
@@ -47,14 +49,14 @@
         var total ={{price}}*
             {{addedqty}};
         all += total;
-        $('div[id="{{this.itemid}}"]').text('total for this item : ' + total);
+        $('div[id="{{this.itemid}}"]').text('Total for this item : ₹ ' + total);
         {{/each}}
         {{#if items}}
         //$('#total').text("total : " + all);
             if(all>5000)
             {
-                $('#total').text("total : " + all +'  (includes shipping cost if any)');
-                $('#freeship').text("your items will be shipped free of cost if you order now");
+                $('#total').text("Total : ₹ " + all +'  (includes shipping cost if any)');
+                $('#freeship').text("Your items will be shipped free of cost.");
             }
             else{
                 var shipcost=0;
@@ -63,7 +65,7 @@
                 {{/each}}
                 all+=shipcost;
                 $('#total').text("total : " + all +'  (includes shipping cost if any)');
-                $('#shipcost').text("shipping cost : " + shipcost);
+                $('#shipcost').text("Shipping Cost : ₹ " + shipcost);
             }
         {{/if}}
 </script>
