@@ -25,8 +25,8 @@ function connectDatabase() {
         //...................//.............................cust signup tables...................................
                                 var create_table_customers=`CREATE TABLE IF NOT EXISTS
                                     customers (
-                                        custid VARCHAR(40) NOT NULL UNIQUE,
-                                        cname VARCHAR(20) NOT NULL,
+                                        custid VARCHAR(100) NOT NULL UNIQUE,
+                                        cname VARCHAR(100) NOT NULL,
                                         password VARCHAR(100) NOT NULL,
                                         dob DATE NOT NULL,
                                         age INT,
@@ -60,8 +60,8 @@ function connectDatabase() {
 
                                 var create_table_custphone=`CREATE TABLE IF NOT EXISTS 
                                     custphone (
-                                        custid VARCHAR(40) NOT NULL,
-                                        cphone VARCHAR(20) NOT NULL,
+                                        custid VARCHAR(100) NOT NULL,
+                                        cphone VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (custid,cphone),
                                         FOREIGN KEY (custid) REFERENCES customers(custid)
                                     )`;
@@ -73,8 +73,8 @@ function connectDatabase() {
 
                                 var create_table_state=`CREATE TABLE IF NOT EXISTS 
                                     state (
-                                        city VARCHAR(20) NOT NULL UNIQUE,
-                                        state VARCHAR(20) NOT NULL,
+                                        city VARCHAR(100) NOT NULL UNIQUE,
+                                        state VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (city)
                                     )`;
                                 // console.log(create_table_state);
@@ -85,8 +85,8 @@ function connectDatabase() {
 
                                 var create_table_city=`CREATE TABLE IF NOT EXISTS 
                                     city (
-                                        pincode VARCHAR(6) NOT NULL UNIQUE,
-                                        city VARCHAR(20) NOT NULL,
+                                        pincode VARCHAR(100) NOT NULL UNIQUE,
+                                        city VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (pincode),
                                         FOREIGN KEY (city) REFERENCES state(city)
                                     )`;
@@ -98,10 +98,10 @@ function connectDatabase() {
 
                                 var create_table_caddress=`CREATE TABLE IF NOT EXISTS 
                                     caddress (
-                                        custid VARCHAR(40) NOT NULL,
-                                        houseno VARCHAR(50) NOT NULL,
-                                        streetno VARCHAR(50) NOT NULL,
-                                        pincode VARCHAR(6) NOT NULL,
+                                        custid VARCHAR(100) NOT NULL,
+                                        houseno VARCHAR(100) NOT NULL,
+                                        streetno VARCHAR(100) NOT NULL,
+                                        pincode VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (custid,houseno,streetno,pincode),
                                         FOREIGN KEY (pincode) REFERENCES city(pincode),
                                         FOREIGN KEY (custid) REFERENCES customers(custid)
@@ -117,8 +117,8 @@ function connectDatabase() {
 
                                 var create_table_sellers=`CREATE TABLE IF NOT EXISTS 
                                     sellers (
-                                        sellerid VARCHAR(40) NOT NULL UNIQUE,
-                                        sname VARCHAR(20) NOT NULL,
+                                        sellerid VARCHAR(100) NOT NULL UNIQUE,
+                                        sname VARCHAR(100) NOT NULL,
                                         password VARCHAR(100) NOT NULL,
                                         dob DATE NOT NULL,
                                         age INT,
@@ -151,8 +151,8 @@ function connectDatabase() {
 
                                 var create_table_sellerphone=`CREATE TABLE IF NOT EXISTS 
                                     sellerphone (
-                                        sellerid VARCHAR(40) NOT NULL,
-                                        sphone VARCHAR(20) NOT NULL,
+                                        sellerid VARCHAR(100) NOT NULL,
+                                        sphone VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (sellerid,sphone),
                                         FOREIGN KEY (sellerid) REFERENCES sellers(sellerid))`;
                                 db.query(create_table_sellerphone,function(err,result){
@@ -162,12 +162,12 @@ function connectDatabase() {
 
                                 var additem=`CREATE TABLE IF NOT EXISTS 
                                     items (
-                                        itemid VARCHAR(40) NOT NULL UNIQUE,
-                                        iname VARCHAR(20) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL UNIQUE,
+                                        iname VARCHAR(100) NOT NULL,
                                         price FLOAT NOT NULL,
                                         description VARCHAR(100) NOT NULL,
                                         shipcost FLOAT NOT NULL,
-                                        sellerid VARCHAR(40) NOT NULL,
+                                        sellerid VARCHAR(100) NOT NULL,
                                         iquantity INT NOT NULL,
                                         dateofadd DATETIME NOT NULL,
                                         type VARCHAR(100) NOT NULL,
@@ -179,8 +179,8 @@ function connectDatabase() {
                                 });
                                 var electronics=`CREATE TABLE IF NOT EXISTS 
                                     electronics (
-                                        itemid VARCHAR(40) NOT NULL UNIQUE,
-                                        warrenty VARCHAR(20) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL UNIQUE,
+                                        warrenty VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (itemid),
                                         FOREIGN KEY (itemid) REFERENCES items(itemid))`;
                                 db.query(electronics,(err,result)=>{
@@ -188,8 +188,8 @@ function connectDatabase() {
                                     else console.log(result);
                                 });
                                 var fashion=`CREATE TABLE IF NOT EXISTS 
-                                    fashion (itemid VARCHAR(40) NOT NULL UNIQUE,
-                                        size VARCHAR(20) NOT NULL,
+                                    fashion (itemid VARCHAR(100) NOT NULL UNIQUE,
+                                        size VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (itemid),
                                         FOREIGN KEY (itemid) REFERENCES items(itemid))`;
                                 db.query(fashion,(err,result)=>{
@@ -198,8 +198,8 @@ function connectDatabase() {
                                 });
                                 var sports=`CREATE TABLE IF NOT EXISTS
                                     sports (
-                                        itemid VARCHAR(40) NOT NULL UNIQUE,
-                                        size VARCHAR(20) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL UNIQUE,
+                                        size VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (itemid),
                                         FOREIGN KEY (itemid) REFERENCES items(itemid))`;
                                 db.query(sports,(err,result)=>{
@@ -208,9 +208,9 @@ function connectDatabase() {
                                 });
                                 var books=`CREATE TABLE IF NOT EXISTS 
                                     books (
-                                        itemid VARCHAR(40) NOT NULL UNIQUE,
-                                        author VARCHAR(20) NOT NULL,
-                                        publisher VARCHAR(20) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL UNIQUE,
+                                        author VARCHAR(100) NOT NULL,
+                                        publisher VARCHAR(100) NOT NULL,
                                         PRIMARY KEY (itemid),
                                         FOREIGN KEY (itemid) REFERENCES items(itemid))`;
                                 db.query(books,(err,result)=>{
@@ -222,12 +222,12 @@ function connectDatabase() {
                                 
                                 var shoppingcart=`CREATE TABLE IF NOT EXISTS 
                                     shoppingcart (
-                                        cartid VARCHAR(40) NOT NULL UNIQUE,
-                                        custid VARCHAR(40) NOT NULL,
-                                        orderid VARCHAR(40),
-                                        paymode VARCHAR(20),
+                                        cartid VARCHAR(100) NOT NULL UNIQUE,
+                                        custid VARCHAR(100) NOT NULL,
+                                        orderid VARCHAR(100),
+                                        paymode VARCHAR(100),
                                         orderdate DATETIME,
-                                        orderstatus VARCHAR(20),
+                                        orderstatus VARCHAR(100),
                                         PRIMARY KEY (cartid),
                                         FOREIGN KEY (custid) REFERENCES customers(custid)
                                     )`; 
@@ -237,9 +237,9 @@ function connectDatabase() {
                                 });
                                 var addedto=`CREATE TABLE IF NOT EXISTS 
                                     addedto (
-                                        itemid VARCHAR(40) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL,
                                         addedqty INT NOT NULL,
-                                        cartid VARCHAR(40) NOT NULL,
+                                        cartid VARCHAR(100) NOT NULL,
                                         itemstatus VARCHAR(100),
                                         PRIMARY KEY(itemid,cartid),
                                         FOREIGN KEY(itemid) REFERENCES items(itemid),
@@ -251,8 +251,8 @@ function connectDatabase() {
                                 });
                                 var contains=`CREATE TABLE IF NOT EXISTS 
                                     contains (
-                                        orderid VARCHAR(40) NOT NULL,
-                                        itemid VARCHAR(40) NOT NULL,
+                                        orderid VARCHAR(100) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL,
                                         orderedqty INT NOT NULL,
                                         dateofship DATE NOT NULL,
                                         dateofdelivery DATE NOT NULL,
@@ -265,8 +265,8 @@ function connectDatabase() {
                                 });
                                 var views=`CREATE TABLE IF NOT EXISTS 
                                     views (
-                                        custid VARCHAR(40) NOT NULL,
-                                        itemid VARCHAR(40) NOT NULL, 
+                                        custid VARCHAR(100) NOT NULL,
+                                        itemid VARCHAR(100) NOT NULL, 
                                         PRIMARY KEY(custid,itemid),
                                         FOREIGN KEY(itemid) REFERENCES items(itemid),
                                         FOREIGN KEY(custid) REFERENCES customers(custid)
