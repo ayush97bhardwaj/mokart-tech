@@ -85,10 +85,10 @@
                         <div class="card">
                             <div class="card-image">
                                 {{#if url}}
-                                        <a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>
-                                    {{else}}
-                                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
-                                    {{/if}}
+                                    <a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>
+                                {{else}}
+                                    <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                                {{/if}}
                             </div>
                             <div class="card-content">
                                 <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
@@ -107,10 +107,10 @@
                         <div class="card">
                             <div class="card-image">
                                 {{#if url}}
-                                        <a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>
-                                    {{else}}
-                                        <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
-                                    {{/if}}
+                                    <a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>
+                                {{else}}
+                                    <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                                {{/if}}
                             </div>
                             <div class="card-content">
                                 <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
@@ -127,7 +127,11 @@
                     <div class="col l3">
                         <div class="card">
                             <div class="card-image">
-                                {{#if url}}<a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>{{else}}<a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>{{/if}}
+                                {{#if url}}
+                                    <a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>
+                                {{else}}
+                                    <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                                {{/if}}
                             </div>
                             <div class="card-content">
                                 <p class="card-title">{{this.iname}}<span class="right">₹{{this.price}}</span></p>
@@ -145,7 +149,11 @@
                     <div class="col l3">
                         <div class="card">
                             <div class="card-image">
-                                {{#if url}}<a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>{{else}}<a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>{{/if}}
+                                {{#if url}}
+                                    <a href="/items/{{this.itemid}}"><img src="{{url}}/{{image}}"></a>
+                                {{else}}
+                                    <a href="/items/{{this.itemid}}"><img src="/images/sample.jpg"></a>
+                                {{/if}}
                             </div>
                             <div class="card-content">
                                 <p class="card-title">{{this.iname}}<span class="right">ordered qty:{{this.price}}
