@@ -9,6 +9,7 @@ router.get('/', (req, res, next) => {
             db.query(addeditems,(err,result)=>{
                 if(err) console.log(err);
                 else{
+                    console.log('yeh items kyu nhi aaa rhe hain....');
                     console.log(result);
                     // var arritem=[];
                     // result.forEach(item=>{

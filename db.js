@@ -171,6 +171,8 @@ function connectDatabase() {
                                         iquantity INT NOT NULL,
                                         dateofadd DATETIME NOT NULL,
                                         type VARCHAR(100) NOT NULL,
+                                        url VARCHAR(1000),
+                                        image VARCHAR(1000),
                                         PRIMARY KEY (itemid),
                                         FOREIGN KEY (sellerid) REFERENCES sellers(sellerid))`; 
                                 db.query(additem,(err,result)=>{
