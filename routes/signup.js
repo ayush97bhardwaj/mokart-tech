@@ -1,4 +1,5 @@
 var express = require('express');
+var fs=require('fs');
 var router = express.Router();
 var db=require('../db');
 /* GET home page. */
@@ -327,6 +328,10 @@ router.post('/seller',function(req,res,next){
                     }
                 });
             });
+            var dir='./public/images/'+req.body.email;
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
             res.redirect('/signin');
         }
     });

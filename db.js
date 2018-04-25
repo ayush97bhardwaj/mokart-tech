@@ -228,6 +228,7 @@ function connectDatabase() {
                                         paymode VARCHAR(100),
                                         orderdate DATETIME,
                                         orderstatus VARCHAR(100),
+                                        totalamt DOUBLE,
                                         PRIMARY KEY (cartid),
                                         FOREIGN KEY (custid) REFERENCES customers(custid)
                                     )`; 

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db');
+var multer=require('multer');
 /* GET home page. */
 router.get('/:id', function (req, res, next) {
 
@@ -16,7 +17,11 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+
 router.post('/additem',(req,res,next)=>{
+    // console.log('image uploa hogi');
+    // console.log(req.file.path);
+    // console.log(req.file.filename);
     var countquery="select count(*) from items as i where i.sellerid='"+req.session.user.sellerid+"'";
     db.query(countquery,(err,result)=>{
         if(err) console.log(err);

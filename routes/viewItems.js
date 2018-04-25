@@ -34,17 +34,20 @@ router.post('/addtocart/:id',(req,res,next)=>{
         if(err) console.log(err);
         else{
             console.log(result);
-            var additem='insert into addedto (itemid,addedqty,cartid) values ("'+req.params.id+'","'+req.body.qty+'","'+result[0].cartid+'")';
+            var additem="insert into addedto (itemid, addedqty, cartid) values ('"+req.params.id+"','"+req.body.qty+"','"+result[0].cartid+"')";
             db.query(additem,(err,result)=>{
                 if(err) {
-                    console.log(err.sqlMessage);
+                    console.log(err);
                     var cerr=''+err.sqlMessage;
                     cerr=cerr.search('Duplicate entry');
 
                     //.........................item search with params id.....................
                     var item = "select * from items as i where i.itemid='" + req.params.id + "'";
-                    db.query(item,function(err,result){
-                        if(err) console.log(err);
+                    db.query(item,function(err2,result){
+                        if(err2) {
+                            console.log('idhar se aage nhi chal rha');
+                            console.log(err2);
+                        }
                         else{
                             console.log(result);
                             if(cerr!=-1){
