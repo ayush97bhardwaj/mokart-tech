@@ -92,7 +92,7 @@ router.get('/', function (req, res, next) {
         else{
 
           var sport,book,electronic,fash;
-          var sports='select i.itemid,i.iname,i.price,count(*) from views v right join items i on i.itemid=v.itemid where i.type="sports" group by i.itemid order by count(*) desc limit 8';
+          var sports='select i.itemid,i.iname,i.price,i.url,i.image,count(*) from views v right join items i on i.itemid=v.itemid where i.type="sports" group by i.itemid order by count(*) desc limit 8';
             db.query(sports,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -100,7 +100,7 @@ router.get('/', function (req, res, next) {
                 sport=result1;
               }
             });
-            var books='select i.itemid,i.iname,i.price,count(*) from views v right join items i on i.itemid=v.itemid where i.type="books" group by i.itemid order by count(*) desc limit 8';
+            var books='select i.itemid,i.iname,i.price,i.url,i.image,count(*) from views v right join items i on i.itemid=v.itemid where i.type="books" group by i.itemid order by count(*) desc limit 8';
             db.query(books,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -108,7 +108,7 @@ router.get('/', function (req, res, next) {
                 book=result1;
               }
             });
-            var electronics='select i.itemid,i.iname,i.price,count(*) from views v right join items i on i.itemid=v.itemid where i.type="electronics" group by i.itemid order by count(*) desc limit 8';
+            var electronics='select i.itemid,i.iname,i.price,i.url,i.image,count(*) from views v right join items i on i.itemid=v.itemid where i.type="electronics" group by i.itemid order by count(*) desc limit 8';
             db.query(electronics,(err,result1)=>{
               if(err) console.log(err);
               else{
@@ -116,7 +116,7 @@ router.get('/', function (req, res, next) {
                 electronic=result1;
               }
             });
-            var fashion='select i.itemid,i.iname,i.price,count(*) from views v right join items i on i.itemid=v.itemid where i.type="fashion" group by i.itemid order by count(*) desc limit 8';
+            var fashion='select i.itemid,i.iname,i.price,i.url,i.image,count(*) from views v right join items i on i.itemid=v.itemid where i.type="fashion" group by i.itemid order by count(*) desc limit 8';
             db.query(fashion,(err,result1)=>{
               if(err) console.log(err);
               else{

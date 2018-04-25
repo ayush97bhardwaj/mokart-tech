@@ -137,7 +137,7 @@ router.post('/order',(req,res,next)=>{
                             }
                         });    
                     }, 1000);
-                    res.redirect('/');
+                    res.render('orderdone',{title:'cart',loggedin:true,user:req.session.user});
                 }
             });
 

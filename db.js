@@ -252,6 +252,23 @@ function connectDatabase() {
                                     if(err) console.log(err);
                                     // else console.log(result);
                                 });
+                                var check_qty=`
+                                    create trigger check_qty before update on addedto for each row
+                                    begin
+                                    declare qty int;
+                                    declare n text;
+                                    select iquantity into qty from items where itemid=new.itemid;
+                                    select iname into n from items where itemid=new.itemid;
+                                    if qty<new.addedqty then
+                                    set @message_text=concat('<h3 style="color:red;font-size:14px;">the item ',n,' has quantity more than available</h3>');
+                                    signal sqlstate '45000'
+                                    SET message_text=@message_text;
+                                    END IF;
+                                    END;#`;
+                                db.query(check_qty,(err,result)=>{
+                                    if(err) console.log(err);
+                                    // else console.log(result);
+                                });
                                 var contains=`CREATE TABLE IF NOT EXISTS 
                                     contains (
                                         orderid VARCHAR(100) NOT NULL,

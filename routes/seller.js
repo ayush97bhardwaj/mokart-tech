@@ -27,8 +27,8 @@ var upload=multer({storage: storage});
 
 router.post('/additem',upload.single('pic'),(req,res,next)=>{
     console.log('image hogi add');
-    console.log(req.file);
-    console.log(req.file.filename);
+    // console.log(req.file);
+    // console.log(req.file.filename);
     var countquery="select count(*) from items as i where i.sellerid='"+req.session.user.sellerid+"'";
     db.query(countquery,(err,result)=>{
         if(err) console.log(err);
@@ -60,9 +60,10 @@ router.post('/additem',upload.single('pic'),(req,res,next)=>{
         
             // d= [year, month, day].join('-');
             console.log(d);
-
-            var additem="INSERT INTO items (itemid,iname,price,description,shipcost,sellerid,iquantity,dateofadd,type,url,image) values ('"+itemid+"','"+req.body.iname+"','"+req.body.price+"','"+req.body.desc+"','"+req.body.shipcost+"','"+req.session.user.sellerid+"','"+req.body.qty+"','"+d+"','"+req.body.itemCategory+"','"+req.file.destination+"','"+req.file.filename+"')";
-
+            if(req.file && req.file.path)
+                var additem="INSERT INTO items (itemid,iname,price,description,shipcost,sellerid,iquantity,dateofadd,type,url,image) values ('"+itemid+"','"+req.body.iname+"','"+req.body.price+"','"+req.body.desc+"','"+req.body.shipcost+"','"+req.session.user.sellerid+"','"+req.body.qty+"','"+d+"','"+req.body.itemCategory+"','"+req.file.destination+"','"+req.file.filename+"')";
+            else
+                var additem="INSERT INTO items (itemid,iname,price,description,shipcost,sellerid,iquantity,dateofadd,type) values ('"+itemid+"','"+req.body.iname+"','"+req.body.price+"','"+req.body.desc+"','"+req.body.shipcost+"','"+req.session.user.sellerid+"','"+req.body.qty+"','"+d+"','"+req.body.itemCategory+"')";
             db.query(additem,(err,result)=>{
                 if(err) console.log(err);
                // else console.log(result);
